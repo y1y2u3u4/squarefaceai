@@ -126,7 +126,42 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/50 text-center text-muted-foreground text-sm">
+        {/* Featured On Badges */}
+        <div className="mt-12 pt-8 border-t border-border/50">
+          <p className="text-center text-xs text-muted-foreground uppercase tracking-wide mb-4">
+            Featured On
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://fazier.com/launches/squarefaceai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=dark"
+                alt="Launched on Fazier"
+                width="160"
+                height="40"
+              />
+            </a>
+            <a
+              href="https://bestofweb.site/startups/squarefaceai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="https://bestofweb.site/files/press/bestofweb-logo-blue-horizontal.svg"
+                alt="Featured on Best of Web"
+                height="32"
+                className="h-8"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-border/50 text-center text-muted-foreground text-sm">
           <p>&copy; {new Date().getFullYear()} SquareFaceAI. All rights reserved.</p>
         </div>
       </div>
