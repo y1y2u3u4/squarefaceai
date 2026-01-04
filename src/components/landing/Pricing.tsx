@@ -1,0 +1,197 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Check, X, Sparkles } from 'lucide-react';
+import { staggerContainer, fadeInUp, scaleIn } from '@/lib/motion';
+
+export default function Pricing() {
+  const plans = [
+    {
+      name: 'Free',
+      price: '$0',
+      period: '/mo',
+      description: 'Perfect for trying out SquareFaceAI',
+      features: [
+        { text: '5 avatars per day', included: true },
+        { text: '256px resolution', included: true },
+        { text: 'Watermark on images', included: true },
+        { text: 'Basic support', included: true },
+        { text: 'High resolution export', included: false },
+        { text: 'Priority processing', included: false },
+        { text: 'Commercial use', included: false },
+      ],
+      cta: 'Get Started Free',
+      popular: false,
+      gradient: 'linear-gradient(to bottom right, var(--color-gray-from), var(--color-gray-to))',
+    },
+    {
+      name: 'Pro',
+      price: '$4.99',
+      period: '/mo',
+      description: 'For serious creators and professionals',
+      features: [
+        { text: 'Unlimited avatars', included: true },
+        { text: 'Up to 1024px resolution', included: true },
+        { text: 'No watermark', included: true },
+        { text: 'Priority processing', included: true },
+        { text: 'Commercial use license', included: true },
+        { text: 'Advanced styles', included: true },
+        { text: 'Email support', included: true },
+      ],
+      cta: 'Upgrade to Pro',
+      popular: true,
+      gradient: 'from-[var(--accent-primary)] to-[var(--accent-secondary)]',
+    },
+    {
+      name: 'Team',
+      price: '$9.99',
+      period: '/mo',
+      description: 'For teams and agencies',
+      features: [
+        { text: 'Everything in Pro', included: true },
+        { text: 'Team sharing & collaboration', included: true },
+        { text: 'API access (coming soon)', included: true },
+        { text: 'Bulk processing', included: true },
+        { text: 'Custom branding', included: true },
+        { text: 'Priority support', included: true },
+        { text: 'Usage analytics', included: true },
+      ],
+      cta: 'Contact Sales',
+      popular: false,
+      gradient: 'linear-gradient(to bottom right, var(--color-yellow-from), var(--color-yellow-to))',
+    },
+  ];
+
+  return (
+    <section id="pricing" className="py-20 px-6 bg-[var(--bg-secondary)]/30">
+      <div className="container mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={staggerContainer}
+          className="text-center mb-16"
+        >
+          <motion.h2 variants={fadeInUp} className="text-4xl font-bold mb-4">
+            Simple <span className="gradient-text">Pricing</span>
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
+            Choose the plan that works best for you. No hidden fees, cancel anytime.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
+          {plans.map((plan, index) => {
+            const isPro = plan.popular;
+            const cardVariants = isPro ? scaleIn : fadeInUp;
+
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className="relative"
+              >
+                {/* Popular Badge */}
+                {isPro && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                    <Badge className="gap-1.5 py-2 px-4 text-sm shadow-lg">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Most Popular
+                    </Badge>
+                  </div>
+                )}
+
+                <Card
+                  variant="raised"
+                  className={`p-8 h-full transition-all duration-300 ${
+                    isPro
+                      ? 'ring-2 ring-[var(--accent-primary)] scale-105 hover:scale-110'
+                      : 'hover:scale-105'
+                  }`}
+                >
+                  {/* Plan Header */}
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2">
+                      {plan.name}
+                    </h3>
+                    <div className="flex items-baseline justify-center gap-1 mb-2">
+                      <span className="text-5xl font-bold gradient-text">
+                        {plan.price}
+                      </span>
+                      <span className="text-[var(--text-secondary)] text-lg">
+                        {plan.period}
+                      </span>
+                    </div>
+                    <p className="text-sm text-[var(--text-secondary)]">
+                      {plan.description}
+                    </p>
+                  </div>
+
+                  {/* Features List */}
+                  <ul className="space-y-4 mb-8">
+                    {plan.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <div
+                          className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                            !feature.included && 'bg-[var(--bg-tertiary)]'
+                          }`}
+                          style={feature.included ? { background: 'linear-gradient(to bottom right, var(--color-green-from), var(--color-green-to))' } : undefined}
+                        >
+                          {feature.included ? (
+                            <Check className="w-3 h-3 text-white" />
+                          ) : (
+                            <X className="w-3 h-3 text-[var(--text-secondary)]" />
+                          )}
+                        </div>
+                        <span
+                          className={
+                            feature.included
+                              ? 'text-[var(--text-primary)]'
+                              : 'text-[var(--text-secondary)] line-through'
+                          }
+                        >
+                          {feature.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA Button */}
+                  <Button
+                    size="lg"
+                    variant={isPro ? 'default' : 'secondary'}
+                    className="w-full"
+                  >
+                    {plan.cta}
+                  </Button>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* Money-back Guarantee */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mt-12"
+        >
+          <p className="text-[var(--text-secondary)] text-sm">
+            💰 30-day money-back guarantee on all paid plans
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

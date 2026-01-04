@@ -2,16 +2,20 @@
 
 import { useState } from 'react';
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import UploadZone from '@/components/UploadZone';
 import AvatarPreview from '@/components/AvatarPreview';
 import ExampleGrid from '@/components/ExampleGrid';
-import HowItWorks from '@/components/HowItWorks';
-import Features from '@/components/Features';
-import FAQ from '@/components/FAQ';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+
+// Landing page components
+import Hero from '@/components/landing/Hero';
+import LogoBar from '@/components/landing/LogoBar';
+import FeaturesSection from '@/components/landing/FeaturesSection';
+import HowItWorks from '@/components/landing/HowItWorks';
+import Testimonials from '@/components/landing/Testimonials';
+import Pricing from '@/components/landing/Pricing';
+import FAQ from '@/components/landing/FAQ';
+import FinalCTA from '@/components/landing/FinalCTA';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -84,38 +88,29 @@ export default function Home() {
         )}
       </Hero>
 
+      {/* Logo/Trust Bar */}
+      <LogoBar />
+
       {/* Example Grid */}
       <ExampleGrid />
+
+      {/* Features Section (Bento Grid) */}
+      <FeaturesSection />
 
       {/* How It Works */}
       <HowItWorks />
 
-      {/* Features */}
-      <Features />
+      {/* Testimonials */}
+      <Testimonials />
+
+      {/* Pricing */}
+      <Pricing />
 
       {/* FAQ */}
       <FAQ />
 
-      {/* CTA Section */}
-      <section className="py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/10" />
-        <div className="container mx-auto relative z-10">
-          <Card variant="raised" className="max-w-3xl mx-auto text-center p-12">
-            <h2 className="text-4xl font-bold mb-4">
-              Ready to Create Your <span className="gradient-text">Pixel Avatar</span>?
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Join thousands of users who&apos;ve already created their unique avatars
-            </p>
-            <Button
-              size="lg"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Get Started - It&apos;s Free!
-            </Button>
-          </Card>
-        </div>
-      </section>
+      {/* Final CTA */}
+      <FinalCTA />
 
       <Footer />
     </div>
