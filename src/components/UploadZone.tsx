@@ -2,6 +2,8 @@
 
 import { useCallback, useState } from 'react';
 import { Upload, X } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 interface UploadZoneProps {
   onUpload: (file: File) => void;
@@ -74,22 +76,22 @@ export default function UploadZone({ onUpload, isLoading = false }: UploadZonePr
 
   if (isLoading) {
     return (
-      <div className="glass rounded-2xl p-12 text-center">
+      <Card variant="inset" className="p-12 text-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-16 h-16 border-4 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin" />
           <p className="text-lg font-medium">AI is working its magic...</p>
-          <p className="text-zinc-400">This will only take a few seconds</p>
+          <p className="text-muted-foreground">This will only take a few seconds</p>
         </div>
-      </div>
+      </Card>
     );
   }
 
   return (
     <div
       className={`
-        glass rounded-2xl p-8 transition-all duration-300
-        ${isDragging ? 'border-purple-500 glow-purple scale-105' : 'border-zinc-700'}
-        ${preview ? 'border-solid' : 'border-dashed border-2'}
+        rounded-3xl p-8 transition-all duration-300
+        ${isDragging ? 'border-primary scale-105' : 'border-border/50'}
+        ${preview ? 'border-solid border bg-card shadow-[0_4px_12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.1)]' : 'border-dashed border-2 bg-card/50'}
       `}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
@@ -99,15 +101,16 @@ export default function UploadZone({ onUpload, isLoading = false }: UploadZonePr
       {preview ? (
         <div className="relative">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-sm text-zinc-400 truncate">{fileName}</p>
-            <button
+            <p className="text-sm text-muted-foreground truncate">{fileName}</p>
+            <Button
+              variant="ghost"
+              size="icon-sm"
               onClick={handleClear}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors"
             >
-              <X className="w-5 h-5" />
-            </button>
+              <X className="w-4 h-4" />
+            </Button>
           </div>
-          <div className="relative aspect-square max-w-md mx-auto rounded-xl overflow-hidden">
+          <div className="relative aspect-square max-w-md mx-auto rounded-2xl overflow-hidden shadow-[inset_2px_2px_5px_rgba(0,0,0,0.4),inset_-2px_-2px_5px_rgba(255,255,255,0.1)]">
             <img
               src={preview}
               alt="Preview"
@@ -124,14 +127,14 @@ export default function UploadZone({ onUpload, isLoading = false }: UploadZonePr
             onChange={handleFileInput}
           />
           <div className="flex flex-col items-center gap-4 py-12">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.1)]">
               <Upload className="w-8 h-8 text-white" />
             </div>
             <div className="text-center">
               <p className="text-xl font-semibold mb-2">
                 Drop your photo here or click to upload
               </p>
-              <p className="text-zinc-400">
+              <p className="text-muted-foreground">
                 Supports: JPG, PNG, WEBP (Max 5MB)
               </p>
             </div>
