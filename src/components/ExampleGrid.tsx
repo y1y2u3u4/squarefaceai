@@ -118,6 +118,8 @@ export default function ExampleGrid() {
                       width={200}
                       height={200}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 150px, 200px"
                     />
                   </div>
                   <div className="mt-2 text-center">
@@ -144,6 +146,8 @@ export default function ExampleGrid() {
               width={1200}
               height={400}
               className="w-full h-auto rounded-lg"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
             />
           </div>
         </motion.div>

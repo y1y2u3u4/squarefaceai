@@ -16,7 +16,7 @@
   --accent-blue: #93c5fd;
   --accent-purple: #c4b5fd;
   --text-primary: #1f2937;
-  --text-secondary: #6b7280;
+  --text-secondary: #4b5563; /* Improved contrast ratio for accessibility */
   --gradient-mint-pink: linear-gradient(135deg, #4ade80 0%, #f472b6 100%);
   --gradient-pixel: linear-gradient(135deg, #6ee7b7 0%, #93c5fd 50%, #fbcfe8 100%);
 

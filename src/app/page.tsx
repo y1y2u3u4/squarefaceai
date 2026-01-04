@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import UploadZone from '@/components/UploadZone';
 import AvatarPreview from '@/components/AvatarPreview';
 import ExampleGrid from '@/components/ExampleGrid';
@@ -17,6 +18,7 @@ import Pricing from '@/components/landing/Pricing';
 import FAQ from '@/components/landing/FAQ';
 import FinalCTA from '@/components/landing/FinalCTA';
 import UseCases from '@/components/landing/UseCases';
+import SEOContent from '@/components/landing/SEOContent';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -76,6 +78,8 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
+      <Breadcrumb items={[{ label: 'Square Face Avatar Generator' }]} />
+      <main>
 
       {/* Hero Section with Upload/Preview */}
       <Hero>
@@ -116,11 +120,15 @@ export default function Home() {
       {/* Pricing */}
       <Pricing />
 
+      {/* SEO Content */}
+      <SEOContent />
+
       {/* FAQ */}
       <FAQ />
 
       {/* Final CTA */}
       <FinalCTA />
+      </main>
 
       <Footer />
     </div>

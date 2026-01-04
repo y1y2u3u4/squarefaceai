@@ -56,6 +56,8 @@ function FloatingAvatar({
         width={size}
         height={size}
         className="w-full h-full object-cover"
+        loading="lazy"
+        sizes={`${size}px`}
       />
     </motion.div>
   );

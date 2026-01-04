@@ -132,6 +132,8 @@ export default function UseCases() {
                       width={80}
                       height={80}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      sizes="80px"
                     />
                   </div>
 
