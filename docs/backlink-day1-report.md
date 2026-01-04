@@ -177,6 +177,21 @@ From GitHub ai-directories list:
 - BestOfWeb logo badge added to Footer
 - Both badges link to respective product pages
 
+### Product Submission ✅ COMPLETED
+- **Product Page**: https://fazier.com/launches/squarefaceai
+- **Launch Date**: 2026-01-06 (scheduled)
+- **Plan**: Free
+- **Submitted Info**:
+  - Name: SquareFaceAI
+  - Tagline: Transform photos into unique pixel avatars with AI
+  - Category: Products
+  - Topics: Artificial Intelligence, Design, Graphics
+  - Pricing: Freemium
+  - Twitter: https://x.com/squarefaceai
+  - Competitor: Avatarify (https://avatarify.art)
+- **Gallery**: 3 images uploaded (pixel-avatars-grid, square-face-grid, gallery-grid-1)
+- **Maker's Comment**: Posted with product story and feedback request
+
 ---
 
 *Report updated: 2026-01-04*

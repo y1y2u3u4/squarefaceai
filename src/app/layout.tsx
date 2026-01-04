@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import MotionProvider from "@/components/providers/MotionProvider";
+import { GoogleAnalytics, PlausibleAnalytics, MicrosoftClarity } from "@/components/analytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -209,6 +210,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} antialiased`}>
+        <GoogleAnalytics />
+        <PlausibleAnalytics />
+        <MicrosoftClarity />
         <MotionProvider>
           {children}
         </MotionProvider>
