@@ -16,46 +16,48 @@ import Testimonials from '@/components/landing/Testimonials';
 import Pricing from '@/components/landing/Pricing';
 import FAQ from '@/components/landing/FAQ';
 import FinalCTA from '@/components/landing/FinalCTA';
+import UseCases from '@/components/landing/UseCases';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [generatedAvatar, setGeneratedAvatar] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleUpload = async (file: File) => {
     setIsLoading(true);
+    setError(null);
 
-    // Simulate AI processing with a delay
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    try {
+      // Create form data with the image
+      const formData = new FormData();
+      formData.append('image', file);
 
-    // Create a placeholder pixel avatar (in production, this would be the actual AI-generated image)
-    const canvas = document.createElement('canvas');
-    canvas.width = 256;
-    canvas.height = 256;
-    const ctx = canvas.getContext('2d');
+      // Call the avatar generation API
+      const response = await fetch('/api/generate-avatar', {
+        method: 'POST',
+        body: formData,
+      });
 
-    if (ctx) {
-      // Create a gradient background
-      const gradient = ctx.createLinearGradient(0, 0, 256, 256);
-      gradient.addColorStop(0, '#8b5cf6');
-      gradient.addColorStop(1, '#06b6d4');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 256, 256);
-
-      // Add some pixel blocks for demonstration
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-      const blockSize = 32;
-      for (let y = 0; y < 256; y += blockSize) {
-        for (let x = 0; x < 256; x += blockSize) {
-          if (Math.random() > 0.5) {
-            ctx.fillRect(x, y, blockSize - 2, blockSize - 2);
-          }
-        }
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to generate avatar');
       }
 
-      setGeneratedAvatar(canvas.toDataURL());
-    }
+      const result = await response.json();
 
-    setIsLoading(false);
+      if (result.success && result.avatar) {
+        // Convert base64 to data URL
+        const dataUrl = `data:${result.avatar.mimeType};base64,${result.avatar.data}`;
+        setGeneratedAvatar(dataUrl);
+      } else {
+        throw new Error('Invalid response from server');
+      }
+    } catch (err) {
+      console.error('Avatar generation failed:', err);
+      setError(err instanceof Error ? err.message : 'Failed to generate avatar. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleDownload = () => {
@@ -84,7 +86,12 @@ export default function Home() {
             onReset={handleReset}
           />
         ) : (
-          <UploadZone onUpload={handleUpload} isLoading={isLoading} />
+          <UploadZone
+            onUpload={handleUpload}
+            isLoading={isLoading}
+            error={error}
+            onClearError={() => setError(null)}
+          />
         )}
       </Hero>
 
@@ -93,6 +100,9 @@ export default function Home() {
 
       {/* Example Grid */}
       <ExampleGrid />
+
+      {/* Use Cases - Platform specific */}
+      <UseCases />
 
       {/* Features Section (Bento Grid) */}
       <FeaturesSection />

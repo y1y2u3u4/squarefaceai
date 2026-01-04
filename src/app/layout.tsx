@@ -20,6 +20,14 @@ export const metadata: Metadata = {
     "discord avatar generator",
   ],
   authors: [{ name: "SquareFaceAI" }],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/logo.svg", sizes: "180x180", type: "image/svg+xml" },
+    ],
+  },
   openGraph: {
     title: "SquareFaceAI - Your Face, Pixelated Perfectly",
     description: "Transform your photo into a unique pixel avatar in seconds",

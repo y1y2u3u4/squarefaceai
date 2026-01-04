@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Twitter, Github, MessageCircle } from 'lucide-react';
+import SquareFaceLogo from './SquareFaceLogo';
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]" />
+              <SquareFaceLogo size={36} />
               <span className="text-xl font-bold gradient-text">SquareFaceAI</span>
             </div>
             <p className="text-muted-foreground max-w-md text-sm leading-relaxed mb-6">

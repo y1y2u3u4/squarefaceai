@@ -1,16 +1,16 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import { Upload, X } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Upload, X, ImageIcon, AlertCircle, RefreshCw } from 'lucide-react';
 
 interface UploadZoneProps {
   onUpload: (file: File) => void;
   isLoading?: boolean;
+  error?: string | null;
+  onClearError?: () => void;
 }
 
-export default function UploadZone({ onUpload, isLoading = false }: UploadZoneProps) {
+export default function UploadZone({ onUpload, isLoading = false, error, onClearError }: UploadZoneProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>('');
@@ -74,24 +74,65 @@ export default function UploadZone({ onUpload, isLoading = false }: UploadZonePr
     setFileName('');
   };
 
+  // Error state with elegant design
+  if (error) {
+    return (
+      <div className="pixel-card p-8 text-center border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center">
+            <AlertCircle className="w-8 h-8 text-red-500" />
+          </div>
+          <div>
+            <p className="text-lg font-semibold text-gray-800 mb-1">Generation Failed</p>
+            <p className="text-gray-500 text-sm max-w-xs mx-auto">{error}</p>
+          </div>
+          <button
+            onClick={() => {
+              onClearError?.();
+              handleClear();
+            }}
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white rounded-xl font-medium hover:opacity-90 transition-opacity shadow-lg"
+          >
+            <RefreshCw className="w-4 h-4" />
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (isLoading) {
     return (
-      <Card variant="inset" className="p-12 text-center">
+      <div className="pixel-card p-12 text-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-16 h-16 border-4 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin" />
-          <p className="text-lg font-medium">AI is working its magic...</p>
-          <p className="text-muted-foreground">This will only take a few seconds</p>
+          {/* Pixel loading animation */}
+          <div className="relative w-20 h-20">
+            <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 gap-1">
+              {[...Array(9)].map((_, i) => (
+                <div
+                  key={i}
+                  className="bg-[var(--accent-primary)] rounded-sm animate-pulse"
+                  style={{
+                    animationDelay: `${i * 0.1}s`,
+                    opacity: 0.3 + (i % 3) * 0.2
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          <p className="text-lg font-semibold text-gray-800">Creating your avatar...</p>
+          <p className="text-gray-500">This may take 10-30 seconds</p>
         </div>
-      </Card>
+      </div>
     );
   }
 
   return (
     <div
       className={`
-        rounded-3xl p-8 transition-all duration-300
-        ${isDragging ? 'border-primary scale-105' : 'border-border/50'}
-        ${preview ? 'border-solid border bg-card shadow-[0_4px_12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.1)]' : 'border-dashed border-2 bg-card/50'}
+        pixel-card p-6 transition-all duration-200
+        ${isDragging ? 'scale-[1.02] border-[var(--accent-primary)]' : ''}
+        ${preview ? '' : 'border-dashed'}
       `}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
@@ -101,16 +142,18 @@ export default function UploadZone({ onUpload, isLoading = false }: UploadZonePr
       {preview ? (
         <div className="relative">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-sm text-muted-foreground truncate">{fileName}</p>
-            <Button
-              variant="ghost"
-              size="icon-sm"
+            <p className="text-sm text-gray-500 truncate flex items-center gap-2">
+              <ImageIcon className="w-4 h-4" />
+              {fileName}
+            </p>
+            <button
               onClick={handleClear}
+              className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
             >
-              <X className="w-4 h-4" />
-            </Button>
+              <X className="w-4 h-4 text-gray-600" />
+            </button>
           </div>
-          <div className="relative aspect-square max-w-md mx-auto rounded-2xl overflow-hidden shadow-[inset_2px_2px_5px_rgba(0,0,0,0.4),inset_-2px_-2px_5px_rgba(255,255,255,0.1)]">
+          <div className="relative aspect-square max-w-xs mx-auto pixel-avatar-frame">
             <img
               src={preview}
               alt="Preview"
@@ -126,17 +169,24 @@ export default function UploadZone({ onUpload, isLoading = false }: UploadZonePr
             accept="image/*"
             onChange={handleFileInput}
           />
-          <div className="flex flex-col items-center gap-4 py-12">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.1)]">
+          <div className="flex flex-col items-center gap-4 py-8">
+            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[var(--accent-mint)] to-[var(--accent-blue)] flex items-center justify-center shadow-md border-2 border-white">
               <Upload className="w-8 h-8 text-white" />
             </div>
             <div className="text-center">
-              <p className="text-xl font-semibold mb-2">
-                Drop your photo here or click to upload
+              <p className="text-lg font-semibold text-gray-800 mb-1">
+                Drop your photo here
               </p>
-              <p className="text-muted-foreground">
-                Supports: JPG, PNG, WEBP (Max 5MB)
+              <p className="text-gray-500 text-sm mb-4">
+                or click to browse files
               </p>
+              <div className="flex items-center justify-center gap-2 text-xs text-gray-400">
+                <span className="px-2 py-1 bg-gray-100 rounded">JPG</span>
+                <span className="px-2 py-1 bg-gray-100 rounded">PNG</span>
+                <span className="px-2 py-1 bg-gray-100 rounded">WEBP</span>
+                <span className="text-gray-300">|</span>
+                <span>Max 5MB</span>
+              </div>
             </div>
           </div>
         </label>
