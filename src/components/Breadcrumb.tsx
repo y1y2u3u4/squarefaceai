@@ -32,7 +32,7 @@ export default function Breadcrumb({ items = [] }: BreadcrumbProps) {
               itemType="https://schema.org/ListItem"
             >
               {index > 0 && (
-                <ChevronRight className="w-4 h-4 text-gray-400" />
+                <ChevronRight className="w-4 h-4 text-gray-500" />
               )}
               {item.href && index < allItems.length - 1 ? (
                 <Link

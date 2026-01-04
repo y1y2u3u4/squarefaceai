@@ -124,7 +124,7 @@ export default function ExampleGrid() {
                   </div>
                   <div className="mt-2 text-center">
                     <p className="text-sm font-medium text-gray-700">{example.name}</p>
-                    <p className="text-xs text-gray-400">{example.style}</p>
+                    <p className="text-xs text-gray-500">{example.style}</p>
                   </div>
                 </motion.div>
               </motion.div>

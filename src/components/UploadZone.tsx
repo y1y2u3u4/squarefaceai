@@ -180,7 +180,7 @@ export default function UploadZone({ onUpload, isLoading = false, error, onClear
               <p className="text-gray-500 text-sm mb-4">
                 or click to browse files
               </p>
-              <div className="flex items-center justify-center gap-2 text-xs text-gray-400">
+              <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
                 <span className="px-2 py-1 bg-gray-100 rounded">JPG</span>
                 <span className="px-2 py-1 bg-gray-100 rounded">PNG</span>
                 <span className="px-2 py-1 bg-gray-100 rounded">WEBP</span>
