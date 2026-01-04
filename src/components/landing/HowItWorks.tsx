@@ -3,7 +3,14 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Upload, Cpu, Download } from 'lucide-react';
-import { staggerContainer, fadeInUp } from '@/lib/motion';
+import {
+  staggerContainer,
+  staggerItem,
+  sectionReveal,
+  viewportConfig,
+  hoverLift,
+  smooth
+} from '@/lib/motion';
 
 export default function HowItWorks() {
   const steps = [
@@ -36,16 +43,16 @@ export default function HowItWorks() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={staggerContainer}
+          viewport={viewportConfig}
+          variants={sectionReveal}
           className="text-center mb-16"
         >
-          <motion.h2 variants={fadeInUp} className="text-4xl font-bold mb-4">
+          <h2 className="text-4xl font-bold mb-4">
             How It <span className="gradient-text">Works</span>
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
+          </h2>
+          <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
             Transform your photo into a pixel avatar in just 3 simple steps. No design skills required!
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Horizontal Step Layout */}
@@ -53,7 +60,7 @@ export default function HowItWorks() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={viewportConfig}
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 relative"
           >
@@ -62,7 +69,7 @@ export default function HowItWorks() {
               return (
                 <motion.div
                   key={index}
-                  variants={fadeInUp}
+                  variants={staggerItem}
                   className="relative"
                 >
                   {/* Dashed Connector Line (desktop only) */}
@@ -70,28 +77,43 @@ export default function HowItWorks() {
                     <div className="hidden md:block absolute top-16 left-[60%] w-[80%] h-0.5 border-t-2 border-dashed border-[var(--accent-primary)]/30 z-0" />
                   )}
 
-                  <Card
-                    variant="raised"
-                    className="p-8 text-center relative z-10 h-full hover:scale-105 transition-all duration-300 group"
+                  <motion.div
+                    initial="rest"
+                    whileHover="hover"
+                    variants={hoverLift}
                   >
-                    {/* Step Number Badge */}
-                    <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center font-bold text-lg text-white shadow-[0_4px_12px_rgba(0,0,0,0.3)] group-hover:scale-110 transition-transform">
-                      {stepData.step}
-                    </div>
+                    <Card
+                      variant="raised"
+                      className="p-8 text-center relative z-10 h-full group"
+                    >
+                      {/* Step Number Badge */}
+                      <motion.div
+                        className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center font-bold text-lg text-white shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+                        whileHover={{ scale: 1.1 }}
+                        transition={smooth}
+                      >
+                        {stepData.step}
+                      </motion.div>
 
-                    {/* Icon */}
-                    <div className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_4px_12px_rgba(0,0,0,0.3)]" style={{ background: stepData.gradient }}>
-                      <Icon className="w-10 h-10 text-white" />
-                    </div>
+                      {/* Icon */}
+                      <motion.div
+                        className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+                        style={{ background: stepData.gradient }}
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={smooth}
+                      >
+                        <Icon className="w-10 h-10 text-white" />
+                      </motion.div>
 
-                    {/* Content */}
-                    <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
-                      {stepData.title}
-                    </h3>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
-                      {stepData.description}
-                    </p>
-                  </Card>
+                      {/* Content */}
+                      <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
+                        {stepData.title}
+                      </h3>
+                      <p className="text-[var(--text-secondary)] leading-relaxed">
+                        {stepData.description}
+                      </p>
+                    </Card>
+                  </motion.div>
                 </motion.div>
               );
             })}
@@ -102,8 +124,8 @@ export default function HowItWorks() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          viewport={viewportConfig}
+          transition={smooth}
           className="text-center mt-12"
         >
           <p className="text-lg text-[var(--text-primary)]">

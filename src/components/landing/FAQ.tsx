@@ -7,7 +7,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { staggerContainer, fadeInUp } from '@/lib/motion';
+import {
+  staggerContainer,
+  staggerItem,
+  sectionReveal,
+  viewportConfig,
+  smooth
+} from '@/lib/motion';
 
 export default function FAQ() {
   const faqs = [
@@ -49,39 +55,40 @@ export default function FAQ() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={staggerContainer}
+          viewport={viewportConfig}
+          variants={sectionReveal}
           className="text-center mb-16"
         >
-          <motion.h2 variants={fadeInUp} className="text-4xl font-bold mb-4">
+          <h2 className="text-4xl font-bold mb-4">
             Frequently Asked <span className="gradient-text">Questions</span>
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
+          </h2>
+          <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
             Everything you need to know about SquareFaceAI
-          </motion.p>
+          </p>
         </motion.div>
 
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={fadeInUp}
+          viewport={viewportConfig}
+          variants={staggerContainer}
           className="max-w-3xl mx-auto"
         >
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="border border-[var(--border)] rounded-2xl px-6 bg-[var(--bg-secondary)]/30 data-[state=open]:bg-[var(--bg-secondary)]/50 transition-all"
-              >
-                <AccordionTrigger className="text-left text-lg font-semibold text-[var(--text-primary)] hover:no-underline py-6">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-[var(--text-secondary)] leading-relaxed pb-6">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+              <motion.div key={index} variants={staggerItem}>
+                <AccordionItem
+                  value={`item-${index}`}
+                  className="border border-[var(--border)] rounded-2xl px-6 bg-[var(--bg-secondary)]/30 data-[state=open]:bg-[var(--bg-secondary)]/50 overflow-hidden"
+                >
+                  <AccordionTrigger className="text-left text-lg font-semibold text-[var(--text-primary)] hover:no-underline py-6">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[var(--text-secondary)] leading-relaxed pb-6">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
             ))}
           </Accordion>
         </motion.div>
@@ -90,8 +97,8 @@ export default function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          viewport={viewportConfig}
+          transition={smooth}
           className="text-center mt-12"
         >
           <p className="text-[var(--text-secondary)]">

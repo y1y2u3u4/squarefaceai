@@ -5,7 +5,13 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Sparkles, Shield, Zap, UserX } from 'lucide-react';
-import { staggerContainer, fadeInUp } from '@/lib/motion';
+import {
+  staggerContainer,
+  fadeInUp,
+  hoverLift,
+  smooth,
+  buttonPress
+} from '@/lib/motion';
 
 interface HeroProps {
   children: React.ReactNode;
@@ -55,19 +61,33 @@ export default function Hero({ children }: HeroProps) {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-6"
           >
-            <Button
-              size="lg"
-              onClick={() => document.getElementById('upload-zone')?.scrollIntoView({ behavior: 'smooth' })}
+            <motion.div
+              initial="rest"
+              whileHover="hover"
+              whileTap="tap"
+              variants={buttonPress}
             >
-              Create Your Avatar - Free
-            </Button>
-            <Button
-              size="lg"
-              variant="secondary"
-              onClick={() => document.getElementById('examples')?.scrollIntoView({ behavior: 'smooth' })}
+              <Button
+                size="lg"
+                onClick={() => document.getElementById('upload-zone')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Create Your Avatar - Free
+              </Button>
+            </motion.div>
+            <motion.div
+              initial="rest"
+              whileHover="hover"
+              whileTap="tap"
+              variants={buttonPress}
             >
-              See Examples
-            </Button>
+              <Button
+                size="lg"
+                variant="secondary"
+                onClick={() => document.getElementById('examples')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                See Examples
+              </Button>
+            </motion.div>
           </motion.div>
 
           {/* Social Proof */}
@@ -83,7 +103,7 @@ export default function Hero({ children }: HeroProps) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          transition={smooth}
           className="max-w-2xl mx-auto mb-12"
           id="upload-zone"
         >
@@ -98,39 +118,57 @@ export default function Hero({ children }: HeroProps) {
           className="flex flex-wrap items-center justify-center gap-6"
         >
           <motion.div variants={fadeInUp}>
-            <Card variant="flat" className="py-4 px-6 flex flex-row items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)]" style={{ background: 'linear-gradient(to bottom right, var(--color-green-from), var(--color-green-to))' }}>
-                <UserX className="w-5 h-5 text-white" />
-              </div>
-              <div className="text-left">
-                <div className="text-sm font-semibold text-[var(--text-primary)]">No Sign-up Required</div>
-                <div className="text-xs text-[var(--text-secondary)]">Start immediately</div>
-              </div>
-            </Card>
+            <motion.div
+              initial="rest"
+              whileHover="hover"
+              variants={hoverLift}
+            >
+              <Card variant="flat" className="py-4 px-6 flex flex-row items-center gap-3">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)]" style={{ background: 'linear-gradient(to bottom right, var(--color-green-from), var(--color-green-to))' }}>
+                  <UserX className="w-5 h-5 text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-[var(--text-primary)]">No Sign-up Required</div>
+                  <div className="text-xs text-[var(--text-secondary)]">Start immediately</div>
+                </div>
+              </Card>
+            </motion.div>
           </motion.div>
 
           <motion.div variants={fadeInUp}>
-            <Card variant="flat" className="py-4 px-6 flex flex-row items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)]" style={{ background: 'linear-gradient(to bottom right, var(--color-blue-from), var(--color-cyan-to))' }}>
-                <Shield className="w-5 h-5 text-white" />
-              </div>
-              <div className="text-left">
-                <div className="text-sm font-semibold text-[var(--text-primary)]">Privacy Protected</div>
-                <div className="text-xs text-[var(--text-secondary)]">Your data stays safe</div>
-              </div>
-            </Card>
+            <motion.div
+              initial="rest"
+              whileHover="hover"
+              variants={hoverLift}
+            >
+              <Card variant="flat" className="py-4 px-6 flex flex-row items-center gap-3">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)]" style={{ background: 'linear-gradient(to bottom right, var(--color-blue-from), var(--color-cyan-to))' }}>
+                  <Shield className="w-5 h-5 text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-[var(--text-primary)]">Privacy Protected</div>
+                  <div className="text-xs text-[var(--text-secondary)]">Your data stays safe</div>
+                </div>
+              </Card>
+            </motion.div>
           </motion.div>
 
           <motion.div variants={fadeInUp}>
-            <Card variant="flat" className="py-4 px-6 flex flex-row items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
-                <Zap className="w-5 h-5 text-white" />
-              </div>
-              <div className="text-left">
-                <div className="text-sm font-semibold text-[var(--text-primary)]">10 Second Generation</div>
-                <div className="text-xs text-[var(--text-secondary)]">Lightning fast</div>
-              </div>
-            </Card>
+            <motion.div
+              initial="rest"
+              whileHover="hover"
+              variants={hoverLift}
+            >
+              <Card variant="flat" className="py-4 px-6 flex flex-row items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-[var(--text-primary)]">10 Second Generation</div>
+                  <div className="text-xs text-[var(--text-secondary)]">Lightning fast</div>
+                </div>
+              </Card>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

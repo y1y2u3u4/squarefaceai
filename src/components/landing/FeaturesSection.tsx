@@ -3,7 +3,14 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Zap, Shield, Sparkles, Image, UserX, Palette } from 'lucide-react';
-import { staggerContainer, fadeInUp } from '@/lib/motion';
+import {
+  slowStagger,
+  staggerItem,
+  hoverLift,
+  sectionReveal,
+  viewportConfig,
+  iconHover
+} from '@/lib/motion';
 
 export default function FeaturesSection() {
   const features = [
@@ -57,24 +64,24 @@ export default function FeaturesSection() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={staggerContainer}
+          viewport={viewportConfig}
+          variants={sectionReveal}
           className="text-center mb-16"
         >
-          <motion.h2 variants={fadeInUp} className="text-4xl font-bold mb-4">
+          <h2 className="text-4xl font-bold mb-4">
             Why Choose <span className="gradient-text">SquareFaceAI</span>?
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
+          </h2>
+          <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
             We&apos;re not just another avatar generator. Here&apos;s what makes us different.
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Bento Grid Layout */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={staggerContainer}
+          viewport={viewportConfig}
+          variants={slowStagger}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto"
         >
           {features.map((feature, index) => {
@@ -82,23 +89,35 @@ export default function FeaturesSection() {
             return (
               <motion.div
                 key={index}
-                variants={fadeInUp}
+                variants={staggerItem}
                 className={feature.span}
               >
-                <Card
-                  variant="raised"
-                  className="p-8 h-full hover:scale-[1.02] transition-all duration-300 group cursor-pointer"
+                <motion.div
+                  initial="rest"
+                  whileHover="hover"
+                  variants={hoverLift}
                 >
-                  <div className={`w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_4px_12px_rgba(0,0,0,0.3)]`}>
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
-                    {feature.title}
-                  </h3>
-                  <p className="text-[var(--text-secondary)] leading-relaxed">
-                    {feature.description}
-                  </p>
-                </Card>
+                  <Card
+                    variant="raised"
+                    className="p-8 h-full group cursor-pointer"
+                  >
+                    <motion.div
+                      className="w-14 h-14 mb-6 rounded-2xl flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+                      style={{ background: feature.gradient }}
+                      initial="rest"
+                      whileHover="hover"
+                      variants={iconHover}
+                    >
+                      <Icon className="w-7 h-7 text-white" />
+                    </motion.div>
+                    <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
+                      {feature.title}
+                    </h3>
+                    <p className="text-[var(--text-secondary)] leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </Card>
+                </motion.div>
               </motion.div>
             );
           })}

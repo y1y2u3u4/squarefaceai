@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeInUp } from '@/lib/motion';
+import { fastStagger, staggerItem, sectionReveal, viewportConfig } from '@/lib/motion';
 
 export default function LogoBar() {
   const logos = [
@@ -19,31 +19,41 @@ export default function LogoBar() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={fadeInUp}
+          viewport={viewportConfig}
+          variants={sectionReveal}
         >
           <p className="text-center text-sm text-[var(--text-secondary)] mb-8 uppercase tracking-wide">
             Trusted by users from
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {logos.map((logo, index) => (
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={fastStagger}
+          className="flex flex-wrap items-center justify-center gap-8 md:gap-12"
+        >
+          {logos.map((logo) => (
+            <motion.div
+              key={logo.name}
+              variants={staggerItem}
+              className="group"
+            >
               <motion.div
-                key={logo.name}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="group"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-[var(--border)]/30"
+                whileHover={{
+                  scale: 1.05,
+                  borderColor: 'var(--border)'
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
-                <div className="flex items-center gap-2 px-4 py-2 rounded-xl border border-[var(--border)]/30 transition-all duration-300 hover:border-[var(--border)] hover:scale-105">
-                  <div className="w-2 h-2 rounded-full opacity-60 group-hover:opacity-100 transition-opacity" style={{ background: logo.gradient }} />
-                  <span className="text-sm font-semibold text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                    {logo.name}
-                  </span>
-                </div>
+                <div className="w-2 h-2 rounded-full opacity-60 group-hover:opacity-100 transition-opacity" style={{ background: logo.gradient }} />
+                <span className="text-sm font-semibold text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
+                  {logo.name}
+                </span>
               </motion.div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

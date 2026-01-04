@@ -5,7 +5,16 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check, X, Sparkles } from 'lucide-react';
-import { staggerContainer, fadeInUp, scaleIn } from '@/lib/motion';
+import {
+  slowStagger,
+  staggerItem,
+  bounceScale,
+  hoverLift,
+  sectionReveal,
+  viewportConfig,
+  buttonPress,
+  smooth
+} from '@/lib/motion';
 
 export default function Pricing() {
   const plans = [
@@ -71,28 +80,31 @@ export default function Pricing() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={staggerContainer}
+          viewport={viewportConfig}
+          variants={sectionReveal}
           className="text-center mb-16"
         >
-          <motion.h2 variants={fadeInUp} className="text-4xl font-bold mb-4">
+          <h2 className="text-4xl font-bold mb-4">
             Simple <span className="gradient-text">Pricing</span>
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
+          </h2>
+          <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
             Choose the plan that works best for you. No hidden fees, cancel anytime.
-          </motion.p>
+          </p>
         </motion.div>
 
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={staggerContainer}
+          viewport={viewportConfig}
+          variants={slowStagger}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           {plans.map((plan, index) => {
             const isPro = plan.popular;
-            const cardVariants = isPro ? scaleIn : fadeInUp;
+            const cardVariants = isPro ? bounceScale : staggerItem;
+            const cardHoverVariants = isPro
+              ? { ...hoverLift, hover: { ...hoverLift.hover, scale: 1.05, y: -8 } }
+              : hoverLift;
 
             return (
               <motion.div
@@ -110,70 +122,81 @@ export default function Pricing() {
                   </div>
                 )}
 
-                <Card
-                  variant="raised"
-                  className={`p-8 h-full transition-all duration-300 ${
-                    isPro
-                      ? 'ring-2 ring-[var(--accent-primary)] scale-105 hover:scale-110'
-                      : 'hover:scale-105'
-                  }`}
+                <motion.div
+                  initial="rest"
+                  whileHover="hover"
+                  variants={cardHoverVariants}
                 >
-                  {/* Plan Header */}
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2">
-                      {plan.name}
-                    </h3>
-                    <div className="flex items-baseline justify-center gap-1 mb-2">
-                      <span className="text-5xl font-bold gradient-text">
-                        {plan.price}
-                      </span>
-                      <span className="text-[var(--text-secondary)] text-lg">
-                        {plan.period}
-                      </span>
-                    </div>
-                    <p className="text-sm text-[var(--text-secondary)]">
-                      {plan.description}
-                    </p>
-                  </div>
-
-                  {/* Features List */}
-                  <ul className="space-y-4 mb-8">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <div
-                          className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                            !feature.included && 'bg-[var(--bg-tertiary)]'
-                          }`}
-                          style={feature.included ? { background: 'linear-gradient(to bottom right, var(--color-green-from), var(--color-green-to))' } : undefined}
-                        >
-                          {feature.included ? (
-                            <Check className="w-3 h-3 text-white" />
-                          ) : (
-                            <X className="w-3 h-3 text-[var(--text-secondary)]" />
-                          )}
-                        </div>
-                        <span
-                          className={
-                            feature.included
-                              ? 'text-[var(--text-primary)]'
-                              : 'text-[var(--text-secondary)] line-through'
-                          }
-                        >
-                          {feature.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA Button */}
-                  <Button
-                    size="lg"
-                    variant={isPro ? 'default' : 'secondary'}
-                    className="w-full"
+                  <Card
+                    variant="raised"
+                    className={`p-8 h-full ${
+                      isPro ? 'ring-2 ring-[var(--accent-primary)]' : ''
+                    }`}
                   >
-                    {plan.cta}
-                  </Button>
-                </Card>
+                    {/* Plan Header */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2">
+                        {plan.name}
+                      </h3>
+                      <div className="flex items-baseline justify-center gap-1 mb-2">
+                        <span className="text-5xl font-bold gradient-text">
+                          {plan.price}
+                        </span>
+                        <span className="text-[var(--text-secondary)] text-lg">
+                          {plan.period}
+                        </span>
+                      </div>
+                      <p className="text-sm text-[var(--text-secondary)]">
+                        {plan.description}
+                      </p>
+                    </div>
+
+                    {/* Features List */}
+                    <ul className="space-y-4 mb-8">
+                      {plan.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <div
+                            className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                              !feature.included && 'bg-[var(--bg-tertiary)]'
+                            }`}
+                            style={feature.included ? { background: 'linear-gradient(to bottom right, var(--color-green-from), var(--color-green-to))' } : undefined}
+                          >
+                            {feature.included ? (
+                              <Check className="w-3 h-3 text-white" />
+                            ) : (
+                              <X className="w-3 h-3 text-[var(--text-secondary)]" />
+                            )}
+                          </div>
+                          <span
+                            className={
+                              feature.included
+                                ? 'text-[var(--text-primary)]'
+                                : 'text-[var(--text-secondary)] line-through'
+                            }
+                          >
+                            {feature.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* CTA Button */}
+                    <motion.div
+                      initial="rest"
+                      whileHover="hover"
+                      whileTap="tap"
+                      variants={buttonPress}
+                    >
+                      <Button
+                        size="lg"
+                        variant={isPro ? 'default' : 'secondary'}
+                        className="w-full"
+                      >
+                        {plan.cta}
+                      </Button>
+                    </motion.div>
+                  </Card>
+                </motion.div>
               </motion.div>
             );
           })}
@@ -183,8 +206,8 @@ export default function Pricing() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          viewport={viewportConfig}
+          transition={smooth}
           className="text-center mt-12"
         >
           <p className="text-[var(--text-secondary)] text-sm">
