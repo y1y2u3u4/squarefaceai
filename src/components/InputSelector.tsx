@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Sparkles, ChevronDown, Loader2 } from 'lucide-react';
 import RandomOptions from './RandomOptions';
 import CompactUploadZone from './CompactUploadZone';
+import UsageIndicator from './UsageIndicator';
 import { RandomConfig, DEFAULT_RANDOM_CONFIG } from '@/types/avatar';
 
 interface InputSelectorProps {
@@ -14,6 +15,9 @@ interface InputSelectorProps {
   isLoading: boolean;
   error: string | null;
   onClearError: () => void;
+  usageCount?: number;
+  isPro?: boolean;
+  onUpgradeClick?: () => void;
 }
 
 export default function InputSelector({
@@ -22,6 +26,9 @@ export default function InputSelector({
   isLoading,
   error,
   onClearError,
+  usageCount = 0,
+  isPro = false,
+  onUpgradeClick,
 }: InputSelectorProps) {
   const t = useTranslations('input');
   const [showCustomize, setShowCustomize] = useState(false);
@@ -46,9 +53,16 @@ export default function InputSelector({
 
   return (
     <div className="space-y-3 md:space-y-4">
-      {/* Header - Hidden on mobile since hero already has title */}
-      <div className="hidden md:block text-center">
-        <h3 className="text-lg font-semibold text-gray-900">{t('title')}</h3>
+      {/* Header with Usage Indicator */}
+      <div className="flex items-center justify-between">
+        <h3 className="hidden md:block text-lg font-semibold text-gray-900">{t('title')}</h3>
+        <div className="ml-auto">
+          <UsageIndicator
+            usageCount={usageCount}
+            isPro={isPro}
+            onUpgradeClick={onUpgradeClick}
+          />
+        </div>
       </div>
 
       {/* Primary CTA: Quick Random Generation */}

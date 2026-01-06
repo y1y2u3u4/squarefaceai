@@ -8,7 +8,10 @@ import Breadcrumb from '@/components/Breadcrumb';
 import InputSelector from '@/components/InputSelector';
 import AvatarEditor from '@/components/AvatarEditor';
 import ExampleGrid from '@/components/ExampleGrid';
+import UpgradeModal from '@/components/UpgradeModal';
+import UsageIndicator from '@/components/UsageIndicator';
 import { RandomConfig } from '@/types/avatar';
+import { useUsageLimit } from '@/hooks/useUsageLimit';
 
 // Landing page components
 import Hero from '@/components/landing/Hero';
@@ -22,6 +25,8 @@ import FinalCTA from '@/components/landing/FinalCTA';
 import UseCases from '@/components/landing/UseCases';
 import SEOContent from '@/components/landing/SEOContent';
 
+type UpgradeReason = 'limit_reached' | 'high_resolution' | 'commercial_use';
+
 export default function Home() {
   const t = useTranslations();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,8 +34,25 @@ export default function Home() {
   const [generatedAvatar, setGeneratedAvatar] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Usage limit state
+  const { usageCount, canGenerate, isPro, incrementUsage } = useUsageLimit();
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [upgradeReason, setUpgradeReason] = useState<UpgradeReason>('limit_reached');
+
+  // Show upgrade modal with specific reason
+  const showUpgrade = (reason: UpgradeReason) => {
+    setUpgradeReason(reason);
+    setShowUpgradeModal(true);
+  };
+
   // Handle photo upload generation
   const handleUpload = async (file: File) => {
+    // Check usage limit before generating
+    if (!canGenerate) {
+      showUpgrade('limit_reached');
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
 
@@ -54,6 +76,8 @@ export default function Home() {
       if (result.success && result.avatar) {
         const dataUrl = `data:${result.avatar.mimeType};base64,${result.avatar.data}`;
         setGeneratedAvatar(dataUrl);
+        // Increment usage count on successful generation
+        incrementUsage();
       } else {
         throw new Error('Invalid response from server');
       }
@@ -67,6 +91,12 @@ export default function Home() {
 
   // Handle random avatar generation
   const handleRandomGenerate = async (config: RandomConfig) => {
+    // Check usage limit before generating
+    if (!canGenerate) {
+      showUpgrade('limit_reached');
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
 
@@ -92,6 +122,8 @@ export default function Home() {
       if (result.success && result.avatar) {
         const dataUrl = `data:${result.avatar.mimeType};base64,${result.avatar.data}`;
         setGeneratedAvatar(dataUrl);
+        // Increment usage count on successful generation
+        incrementUsage();
       } else {
         throw new Error('Invalid response from server');
       }
@@ -173,6 +205,8 @@ export default function Home() {
             onReset={handleReset}
             onEdit={handleEdit}
             isEditing={isEditing}
+            isPro={isPro}
+            onUpgradeClick={() => showUpgrade('high_resolution')}
           />
         ) : (
           <InputSelector
@@ -181,6 +215,9 @@ export default function Home() {
             isLoading={isLoading}
             error={error}
             onClearError={() => setError(null)}
+            usageCount={usageCount}
+            isPro={isPro}
+            onUpgradeClick={() => showUpgrade('limit_reached')}
           />
         )}
       </Hero>
@@ -217,6 +254,14 @@ export default function Home() {
       </main>
 
       <Footer />
+
+      {/* Upgrade Modal */}
+      <UpgradeModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+        reason={upgradeReason}
+        usageCount={usageCount}
+      />
     </div>
   );
 }

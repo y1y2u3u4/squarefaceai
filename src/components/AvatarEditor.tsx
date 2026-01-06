@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, RotateCcw, Wand2, ChevronDown, Loader2, X } from 'lucide-react';
+import { Download, RotateCcw, Wand2, ChevronDown, Loader2, X, Crown } from 'lucide-react';
 
 interface AvatarEditorProps {
   avatarUrl: string;
@@ -10,7 +10,15 @@ interface AvatarEditorProps {
   onReset: () => void;
   onEdit: (editPrompt: string, features: string[]) => Promise<void>;
   isEditing: boolean;
+  isPro?: boolean;
+  onUpgradeClick?: () => void;
 }
+
+const DOWNLOAD_RESOLUTIONS = [
+  { size: 256, label: '256px', free: true },
+  { size: 512, label: '512px', free: false },
+  { size: 1024, label: '1024px', free: false },
+];
 
 const QUICK_EDITS = [
   { label: 'Add Glasses', value: 'glasses' },
@@ -29,11 +37,66 @@ export default function AvatarEditor({
   onReset,
   onEdit,
   isEditing,
+  isPro = false,
+  onUpgradeClick,
 }: AvatarEditorProps) {
   const [showEditPanel, setShowEditPanel] = useState(false);
   const [editPrompt, setEditPrompt] = useState('');
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [editError, setEditError] = useState<string | null>(null);
+  const [showResolutionMenu, setShowResolutionMenu] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Download with specific resolution
+  const handleDownloadWithSize = async (size: number) => {
+    setShowResolutionMenu(false);
+
+    // Check if Pro required
+    const resolution = DOWNLOAD_RESOLUTIONS.find(r => r.size === size);
+    if (resolution && !resolution.free && !isPro) {
+      onUpgradeClick?.();
+      return;
+    }
+
+    try {
+      // Create canvas for resizing
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve();
+        img.onerror = reject;
+        img.src = avatarUrl;
+      });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      if (ctx) {
+        // Use pixelated rendering for pixel art
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, 0, 0, size, size);
+
+        // Convert to blob and download
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = `squareface-avatar-${size}px.png`;
+            link.href = url;
+            link.click();
+            URL.revokeObjectURL(url);
+          }
+        }, 'image/png');
+      }
+    } catch (error) {
+      console.error('Download failed:', error);
+      // Fallback to original download
+      onDownload();
+    }
+  };
 
   const handleFeatureToggle = (feature: string) => {
     setSelectedFeatures((prev) =>
@@ -96,16 +159,53 @@ export default function AvatarEditor({
 
       {/* Primary Actions */}
       <div className="flex gap-3 mb-4">
-        <motion.button
-          onClick={onDownload}
-          disabled={isEditing}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 pixel-button disabled:opacity-50"
-        >
-          <Download className="w-4 h-4" />
-          Download
-        </motion.button>
+        <div className="relative flex-1">
+          <motion.button
+            onClick={() => setShowResolutionMenu(!showResolutionMenu)}
+            disabled={isEditing}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 pixel-button disabled:opacity-50"
+          >
+            <Download className="w-4 h-4" />
+            Download
+            <ChevronDown className={`w-3 h-3 transition-transform ${showResolutionMenu ? 'rotate-180' : ''}`} />
+          </motion.button>
+
+          {/* Resolution Menu */}
+          <AnimatePresence>
+            {showResolutionMenu && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden z-10"
+              >
+                {DOWNLOAD_RESOLUTIONS.map((res) => (
+                  <button
+                    key={res.size}
+                    onClick={() => handleDownloadWithSize(res.size)}
+                    className="w-full flex items-center justify-between px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors"
+                  >
+                    <span className="font-medium text-gray-700">{res.label}</span>
+                    {!res.free && !isPro && (
+                      <span className="flex items-center gap-1 text-xs text-[var(--accent-primary)]">
+                        <Crown className="w-3 h-3" />
+                        Pro
+                      </span>
+                    )}
+                    {res.free && (
+                      <span className="text-xs text-green-600">Free</span>
+                    )}
+                    {!res.free && isPro && (
+                      <span className="text-xs text-[var(--accent-primary)]">Included</span>
+                    )}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         <motion.button
           onClick={onReset}
           disabled={isEditing}
