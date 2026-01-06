@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
             product_data: {
               name: `SquareFaceAI ${selectedPlan.name} Plan`,
               description: `${selectedPlan.name} subscription for SquareFaceAI`,
-              images: [`${baseUrl}/logo.svg`],
+              // Note: images removed - Stripe requires PNG/JPG/GIF format, not SVG
             },
             unit_amount: selectedPlan.price,
             recurring: {
