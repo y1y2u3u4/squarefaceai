@@ -1,7 +1,8 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import { Upload, X, ImageIcon, AlertCircle, RefreshCw } from 'lucide-react';
+import { Upload, X, ImageIcon, AlertCircle, RefreshCw, Loader2 } from 'lucide-react';
+import { processImageFile, isHeifFormat } from '@/lib/image-utils';
 
 interface UploadZoneProps {
   onUpload: (file: File) => void;
@@ -14,6 +15,8 @@ export default function UploadZone({ onUpload, isLoading = false, error, onClear
   const [isDragging, setIsDragging] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingError, setProcessingError] = useState<string | null>(null);
 
   const handleDragEnter = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -50,32 +53,55 @@ export default function UploadZone({ onUpload, isLoading = false, error, onClear
     }
   }, []);
 
-  const handleFile = (file: File) => {
-    if (!file.type.startsWith('image/')) {
-      alert('Please upload an image file');
+  const handleFile = async (file: File) => {
+    // Basic validation
+    if (!file.type.startsWith('image/') && !isHeifFormat(file)) {
+      setProcessingError('Please upload an image file');
       return;
     }
 
+    setProcessingError(null);
+    setIsProcessing(true);
     setFileName(file.name);
 
-    // Create preview
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setPreview(e.target?.result as string);
-    };
-    reader.readAsDataURL(file);
+    try {
+      // Process and convert image if needed (handles HEIF, large files, etc.)
+      const processedFile = await processImageFile(file);
 
-    // Call parent handler
-    onUpload(file);
+      // Create preview from processed file
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(processedFile);
+
+      // Update filename if converted
+      if (processedFile.name !== file.name) {
+        setFileName(processedFile.name);
+      }
+
+      // Call parent handler with processed file
+      onUpload(processedFile);
+    } catch (err) {
+      console.error('Image processing error:', err);
+      setProcessingError(err instanceof Error ? err.message : 'Failed to process image');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const handleClear = () => {
     setPreview(null);
     setFileName('');
+    setProcessingError(null);
   };
 
+  // Combined error (processing error or API error)
+  const displayError = processingError || error;
+
   // Error state with elegant design
-  if (error) {
+  if (displayError) {
+    const isProcessError = !!processingError;
     return (
       <div className="pixel-card p-8 text-center border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
         <div className="flex flex-col items-center gap-4">
@@ -83,8 +109,10 @@ export default function UploadZone({ onUpload, isLoading = false, error, onClear
             <AlertCircle className="w-8 h-8 text-red-500" />
           </div>
           <div>
-            <p className="text-lg font-semibold text-gray-800 mb-1">Generation Failed</p>
-            <p className="text-gray-500 text-sm max-w-xs mx-auto">{error}</p>
+            <p className="text-lg font-semibold text-gray-800 mb-1">
+              {isProcessError ? 'Image Processing Failed' : 'Generation Failed'}
+            </p>
+            <p className="text-gray-500 text-sm max-w-xs mx-auto">{displayError}</p>
           </div>
           <button
             onClick={() => {
@@ -96,6 +124,19 @@ export default function UploadZone({ onUpload, isLoading = false, error, onClear
             <RefreshCw className="w-4 h-4" />
             Try Again
           </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Processing state (converting image format)
+  if (isProcessing) {
+    return (
+      <div className="pixel-card p-12 text-center">
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="w-12 h-12 text-[var(--accent-primary)] animate-spin" />
+          <p className="text-lg font-semibold text-gray-800">Processing image...</p>
+          <p className="text-gray-500 text-sm">Converting format for best results</p>
         </div>
       </div>
     );
@@ -166,7 +207,7 @@ export default function UploadZone({ onUpload, isLoading = false, error, onClear
           <input
             type="file"
             className="hidden"
-            accept="image/*"
+            accept="image/*,.heic,.heif"
             onChange={handleFileInput}
           />
           <div className="flex flex-col items-center gap-4 py-8">
@@ -180,10 +221,11 @@ export default function UploadZone({ onUpload, isLoading = false, error, onClear
               <p className="text-gray-500 text-sm mb-4">
                 or click to browse files
               </p>
-              <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
+              <div className="flex items-center justify-center gap-2 text-xs text-gray-500 flex-wrap">
                 <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded">JPG</span>
                 <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded">PNG</span>
                 <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded">WEBP</span>
+                <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded">HEIC</span>
                 <span className="text-gray-300">|</span>
                 <span>Max 5MB</span>
               </div>
