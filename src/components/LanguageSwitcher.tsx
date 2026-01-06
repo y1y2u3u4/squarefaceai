@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter, usePathname } from '@/i18n/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { locales, localeNames, localeFlags, type Locale } from '@/i18n/config';
@@ -25,12 +25,8 @@ export default function LanguageSwitcher() {
   }, []);
 
   const handleLocaleChange = (newLocale: Locale) => {
-    // Get the path without the locale prefix
-    const pathWithoutLocale = pathname.replace(/^\/(en|fr|de|es|tr|ja|zh)/, '') || '/';
-
-    // Navigate to the new locale
-    const newPath = newLocale === 'en' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`;
-    router.push(newPath);
+    // Use next-intl's router to handle locale change properly
+    router.replace(pathname, { locale: newLocale });
     setIsOpen(false);
   };
 
