@@ -4,9 +4,10 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import UploadZone from '@/components/UploadZone';
-import AvatarPreview from '@/components/AvatarPreview';
+import InputSelector from '@/components/InputSelector';
+import AvatarEditor from '@/components/AvatarEditor';
 import ExampleGrid from '@/components/ExampleGrid';
+import { RandomConfig } from '@/types/avatar';
 
 // Landing page components
 import Hero from '@/components/landing/Hero';
@@ -22,19 +23,20 @@ import SEOContent from '@/components/landing/SEOContent';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [generatedAvatar, setGeneratedAvatar] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Handle photo upload generation
   const handleUpload = async (file: File) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      // Create form data with the image
       const formData = new FormData();
+      formData.append('mode', 'upload');
       formData.append('image', file);
 
-      // Call the avatar generation API
       const response = await fetch('/api/generate-avatar', {
         method: 'POST',
         body: formData,
@@ -48,7 +50,6 @@ export default function Home() {
       const result = await response.json();
 
       if (result.success && result.avatar) {
-        // Convert base64 to data URL
         const dataUrl = `data:${result.avatar.mimeType};base64,${result.avatar.data}`;
         setGeneratedAvatar(dataUrl);
       } else {
@@ -56,6 +57,44 @@ export default function Home() {
       }
     } catch (err) {
       console.error('Avatar generation failed:', err);
+      setError(err instanceof Error ? err.message : 'Failed to generate avatar. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Handle random avatar generation
+  const handleRandomGenerate = async (config: RandomConfig) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('mode', 'random');
+      formData.append('gender', config.gender);
+      formData.append('features', JSON.stringify(config.features));
+      formData.append('prompt', config.prompt);
+
+      const response = await fetch('/api/generate-avatar', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to generate avatar');
+      }
+
+      const result = await response.json();
+
+      if (result.success && result.avatar) {
+        const dataUrl = `data:${result.avatar.mimeType};base64,${result.avatar.data}`;
+        setGeneratedAvatar(dataUrl);
+      } else {
+        throw new Error('Invalid response from server');
+      }
+    } catch (err) {
+      console.error('Random avatar generation failed:', err);
       setError(err instanceof Error ? err.message : 'Failed to generate avatar. Please try again.');
     } finally {
       setIsLoading(false);
@@ -73,6 +112,48 @@ export default function Home() {
 
   const handleReset = () => {
     setGeneratedAvatar(null);
+    setError(null);
+  };
+
+  // Handle avatar editing
+  const handleEdit = async (editPrompt: string, features: string[]) => {
+    if (!generatedAvatar) return;
+
+    setIsEditing(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('mode', 'edit');
+      // Extract base64 data from data URL
+      const base64Data = generatedAvatar.split(',')[1];
+      formData.append('baseImage', base64Data);
+      formData.append('editPrompt', editPrompt);
+      formData.append('editFeatures', JSON.stringify(features));
+
+      const response = await fetch('/api/generate-avatar', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to edit avatar');
+      }
+
+      const result = await response.json();
+
+      if (result.success && result.avatar) {
+        const dataUrl = `data:${result.avatar.mimeType};base64,${result.avatar.data}`;
+        setGeneratedAvatar(dataUrl);
+      } else {
+        throw new Error('Invalid response from server');
+      }
+    } catch (err) {
+      console.error('Avatar edit failed:', err);
+      throw err; // Re-throw so AvatarEditor can handle it
+    } finally {
+      setIsEditing(false);
+    }
   };
 
   return (
@@ -81,17 +162,20 @@ export default function Home() {
       <Breadcrumb items={[{ label: 'Square Face Avatar Generator' }]} />
       <main>
 
-      {/* Hero Section with Upload/Preview */}
+      {/* Hero Section with Input/Preview */}
       <Hero>
         {generatedAvatar ? (
-          <AvatarPreview
+          <AvatarEditor
             avatarUrl={generatedAvatar}
             onDownload={handleDownload}
             onReset={handleReset}
+            onEdit={handleEdit}
+            isEditing={isEditing}
           />
         ) : (
-          <UploadZone
+          <InputSelector
             onUpload={handleUpload}
+            onRandomGenerate={handleRandomGenerate}
             isLoading={isLoading}
             error={error}
             onClearError={() => setError(null)}

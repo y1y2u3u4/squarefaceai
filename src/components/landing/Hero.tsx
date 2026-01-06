@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Zap, Shield, UserX } from 'lucide-react';
-import Image from 'next/image';
 import {
   staggerContainer,
   fadeInUp,
@@ -12,83 +11,17 @@ import {
   smooth,
   buttonPress
 } from '@/lib/motion';
+import GalleryBackground from './GalleryBackground';
 
 interface HeroProps {
   children: React.ReactNode;
 }
 
-// Floating avatar component
-function FloatingAvatar({
-  src,
-  size,
-  className,
-  delay = 0
-}: {
-  src: string;
-  size: number;
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{
-        opacity: 1,
-        scale: 1,
-        y: [0, -8, 0]
-      }}
-      transition={{
-        opacity: { duration: 0.5, delay },
-        scale: { duration: 0.5, delay },
-        y: {
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay
-        }
-      }}
-      className={`pixel-avatar-frame ${className}`}
-      style={{ width: size, height: size }}
-    >
-      <Image
-        src={src}
-        alt="Square Face Avatar"
-        width={size}
-        height={size}
-        className="w-full h-full object-cover"
-        loading="lazy"
-        sizes={`${size}px`}
-      />
-    </motion.div>
-  );
-}
-
 export default function Hero({ children }: HeroProps) {
   return (
-    <section className="min-h-screen pt-28 pb-16 px-6 relative overflow-hidden flex items-center bg-gradient-to-b from-[#f0fdf4] via-white to-[#fdf4ff]">
-      {/* Decorative pixel patterns */}
-      <div className="absolute top-20 left-10 w-4 h-4 bg-[var(--accent-mint)] rounded-sm opacity-60" />
-      <div className="absolute top-40 left-20 w-3 h-3 bg-[var(--accent-pink)] rounded-sm opacity-50" />
-      <div className="absolute top-32 right-16 w-5 h-5 bg-[var(--accent-yellow)] rounded-sm opacity-60" />
-      <div className="absolute top-60 right-24 w-3 h-3 bg-[var(--accent-blue)] rounded-sm opacity-50" />
-      <div className="absolute bottom-40 left-16 w-4 h-4 bg-[var(--accent-purple)] rounded-sm opacity-50" />
-      <div className="absolute bottom-32 right-20 w-3 h-3 bg-[var(--accent-mint)] rounded-sm opacity-60" />
-
-      {/* Floating Avatars - Left Side */}
-      <div className="hidden lg:block absolute left-8 top-1/4">
-        <FloatingAvatar src="/avatars/hero-avatar-1.png" size={100} delay={0} />
-      </div>
-      <div className="hidden lg:block absolute left-24 top-1/2">
-        <FloatingAvatar src="/avatars/hero-avatar-2.png" size={80} delay={0.5} />
-      </div>
-
-      {/* Floating Avatars - Right Side */}
-      <div className="hidden lg:block absolute right-8 top-1/3">
-        <FloatingAvatar src="/avatars/hero-avatar-3.png" size={90} delay={0.3} />
-      </div>
-      <div className="hidden lg:block absolute right-28 top-2/3">
-        <FloatingAvatar src="/avatars/hero-avatar-1.png" size={70} delay={0.7} />
-      </div>
+    <section className="min-h-screen pt-28 pb-16 px-6 relative overflow-hidden flex items-center">
+      {/* Gallery Background - Shows avatar examples */}
+      <GalleryBackground />
 
       <div className="container mx-auto relative z-10">
         <motion.div
@@ -185,7 +118,7 @@ export default function Hero({ children }: HeroProps) {
           </motion.div>
         </motion.div>
 
-        {/* Upload Zone Area */}
+        {/* Upload Zone Area - Enhanced visibility on gallery background */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -193,7 +126,9 @@ export default function Hero({ children }: HeroProps) {
           className="max-w-2xl mx-auto mb-12"
           id="upload-zone"
         >
-          {children}
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50">
+            {children}
+          </div>
         </motion.div>
 
         {/* Trust Indicators */}
