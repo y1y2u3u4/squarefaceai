@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "title": "SquareFaceAI - Generador de Avatar Pixel IA Gratis | Creador de Icono Cara Cuadrada",
+    "description": "Transforma tu foto en un adorable avatar pixel de cara cuadrada en segundos. Generador de avatar IA gratis para Discord, Twitter, perfiles gaming."
+  },
+  "header": {
+    "howItWorks": "Cómo Funciona",
+    "features": "Características",
+    "pricing": "Precios",
+    "faq": "FAQ",
+    "getStarted": "Empezar"
+  },
+  "hero": {
+    "badge": "Generador IA Cara Cuadrada",
+    "titleLine1": "Crea Tu",
+    "titleHighlight": "Cara Cuadrada",
+    "titleLine2": "Avatar Pixel",
+    "subtitleShort": "Transforma fotos en avatares pixel en segundos.",
+    "subtitleFull": "Transforma tu foto en un adorable avatar pixel de cara cuadrada en segundos. Perfecto para redes sociales, perfiles gaming e identidades digitales.",
+    "ctaPrimary": "Crear Avatar Gratis",
+    "ctaSecondary": "Ver Ejemplos",
+    "featureFree": "Gratis",
+    "featureNoLogin": "Sin registro",
+    "featureInstant": "Instantáneo"
+  },
+  "input": {
+    "title": "Genera Tu Avatar Pixel",
+    "generateRandom": "Generar Avatar Aleatorio",
+    "generating": "Generando...",
+    "customize": "Personalizar",
+    "hideOptions": "Ocultar opciones",
+    "or": "o",
+    "uploadPhoto": "Sube tu foto",
+    "uploadSubtitle": "Para un avatar personalizado"
+  },
+  "result": {
+    "title": "¡Tu Avatar Pixel está Listo!",
+    "subtitle": "Descarga, edita o crea otro.",
+    "download": "Descargar",
+    "new": "Nuevo",
+    "editAvatar": "Editar Avatar",
+    "privacyNote": "Tu foto se procesa de forma segura. ¡Valoramos tu privacidad!"
+  },
+  "trustIndicators": {
+    "noSignup": "Sin Registro",
+    "noSignupDesc": "Empieza al instante",
+    "privacySafe": "Privacidad Segura",
+    "privacySafeDesc": "Fotos no almacenadas",
+    "fastGeneration": "10s Generación",
+    "fastGenerationDesc": "Super rápido"
+  },
+  "logoBar": {
+    "trustedBy": "Usuarios de confianza de"
+  },
+  "examples": {
+    "title": "Mira lo que es Posible",
+    "subtitle": "Cada avatar es único, como tú. Aquí hay algunos ejemplos de lo que nuestra IA puede crear.",
+    "allStyles": "Todos los Estilos",
+    "customizationNote": "¡Más de {count} opciones de personalización disponibles!",
+    "tryCreating": "Intenta crear el tuyo"
+  },
+  "useCases": {
+    "title": "Perfecto para Cada Plataforma",
+    "subtitle": "Tu avatar de cara cuadrada funciona genial en todas partes. Aquí hay algunos casos de uso populares.",
+    "discord": {
+      "name": "Discord",
+      "desc": "Destaca en servidores gaming con un avatar pixel único"
+    },
+    "twitter": {
+      "name": "Twitter / X",
+      "desc": "Crea un perfil llamativo que atraiga más seguidores"
+    },
+    "youtube": {
+      "name": "YouTube",
+      "desc": "Construye tu marca con un avatar de canal memorable"
+    },
+    "gaming": {
+      "name": "Gaming",
+      "desc": "Perfecto para Steam, Twitch y perfiles gaming"
+    },
+    "tiktok": {
+      "name": "TikTok",
+      "desc": "Hazte notar con un avatar lindo y moderno"
+    },
+    "nft": {
+      "name": "Perfil NFT",
+      "desc": "Usa como tu identidad Web3 en todas las plataformas"
+    },
+    "anywhere": "...¡y en cualquier otro lugar donde necesites un avatar único!",
+    "createNow": "Crea Tu Avatar Ahora"
+  },
+  "features": {
+    "title": "¿Por Qué Elegir SquareFaceAI?",
+    "subtitle": "No somos solo otro generador de avatares. Esto es lo que nos hace diferentes.",
+    "fast": {
+      "title": "Ultra Rápido",
+      "desc": "Obtén tu avatar pixel en solo 10 segundos. ¡Sin más esperas!"
+    },
+    "privacy": {
+      "title": "Privacidad Primero",
+      "desc": "Tus fotos nunca se almacenan. Procesadas de forma segura y eliminadas inmediatamente."
+    },
+    "ai": {
+      "title": "Potenciado por IA",
+      "desc": "IA avanzada analiza tus características únicas para crear un avatar personalizado."
+    },
+    "quality": {
+      "title": "Alta Calidad",
+      "desc": "Exporta hasta 1024px para avatares nítidos y claros en todas partes."
+    },
+    "noSignup": {
+      "title": "Sin Registro",
+      "desc": "Empieza a crear inmediatamente. No se requiere cuenta para el nivel gratuito."
+    },
+    "styles": {
+      "title": "Múltiples Estilos",
+      "desc": "Elige entre pixel art, cartoon, minimalista y más estilos."
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo Funciona",
+    "subtitle": "Transforma tu foto en un avatar pixel en solo 3 simples pasos. ¡No se requieren habilidades de diseño!",
+    "step1": {
+      "title": "Sube Tu Foto",
+      "desc": "Arrastra y suelta o haz clic para subir. Soporta JPG, PNG, WEBP."
+    },
+    "step2": {
+      "title": "La Magia de la IA Sucede",
+      "desc": "Nuestra IA analiza tus rasgos faciales y crea tu avatar único."
+    },
+    "step3": {
+      "title": "Descarga y Comparte",
+      "desc": "Obtén tu avatar al instante. ¡Úsalo en Discord, Twitter, donde quieras!"
+    },
+    "avgTime": "Tiempo promedio de generación: 10 segundos"
+  },
+  "testimonials": {
+    "title": "Lo Que Dicen Nuestros Usuarios",
+    "subtitle": "Únete a miles de usuarios satisfechos creando avatares pixel únicos"
+  },
+  "pricing": {
+    "title": "Precios Simples",
+    "subtitle": "Elige el plan que mejor te funcione. Sin cargos ocultos, cancela cuando quieras.",
+    "free": {
+      "name": "Gratis",
+      "price": "$0",
+      "period": "/mes",
+      "desc": "Pruébalo, no se requiere tarjeta de crédito",
+      "features": {
+        "avatars": "3 avatares por día",
+        "resolution": "Resolución 256px",
+        "styles": "Estilos básicos",
+        "use": "Solo uso personal"
+      },
+      "cta": "Empezar Gratis"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$4.99",
+      "period": "/mes",
+      "desc": "Creación ilimitada para creadores",
+      "badge": "Más Popular",
+      "features": {
+        "avatars": "Avatares ilimitados",
+        "resolution": "Hasta 1024px de resolución",
+        "styles": "Todos los estilos desbloqueados",
+        "priority": "Procesamiento prioritario",
+        "commercial": "Licencia comercial",
+        "support": "Soporte por email"
+      },
+      "cta": "Actualizar a Pro"
+    },
+    "guarantee": "Garantía de devolución de 30 días en todos los planes de pago"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre SquareFaceAI",
+    "questions": {
+      "howItWorks": {
+        "q": "¿Cómo funciona SquareFaceAI?",
+        "a": "Nuestra IA analiza tu foto subida, identifica los rasgos faciales clave y los transforma en un avatar único estilo pixel mientras mantiene tu parecido."
+      },
+      "photoStored": {
+        "q": "¿Mi foto se almacena en sus servidores?",
+        "a": "No. Tus fotos se procesan en tiempo real y se eliminan inmediatamente después de generar tu avatar. Nunca almacenamos tus imágenes originales."
+      },
+      "formats": {
+        "q": "¿Qué formatos de imagen soportan?",
+        "a": "Soportamos formatos JPG, PNG, WEBP y HEIC/HEIF. Las imágenes se optimizan automáticamente durante la subida."
+      },
+      "commercial": {
+        "q": "¿Puedo usar el avatar comercialmente?",
+        "a": "Los avatares del nivel gratuito son solo para uso personal. Los suscriptores Pro obtienen una licencia comercial para uso comercial ilimitado."
+      },
+      "sizes": {
+        "q": "¿Qué tamaños están disponibles?",
+        "a": "Los usuarios gratuitos obtienen avatares de 256px. Los usuarios Pro pueden exportar hasta 1024px para la máxima calidad."
+      },
+      "different": {
+        "q": "¿En qué se diferencia de otros generadores de avatares?",
+        "a": "SquareFaceAI usa IA avanzada para crear avatares verdaderamente personalizados que capturan tus características únicas, no solo plantillas genéricas."
+      }
+    },
+    "stillQuestions": "¿Aún tienes preguntas?",
+    "contactSupport": "Contacta a nuestro equipo de soporte"
+  },
+  "finalCta": {
+    "title": "¿Listo para Crear Tu Avatar Pixel?",
+    "subtitle": "Únete a miles de usuarios que ya han creado sus avatares únicos. Empieza en segundos, no se requiere tarjeta de crédito.",
+    "ctaPrimary": "Empezar - ¡Es Gratis!",
+    "ctaSecondary": "Ver Precios",
+    "noCreditCard": "No se requiere tarjeta de crédito",
+    "cancelAnytime": "Cancela cuando quieras",
+    "happyUsers": "10,000+ usuarios felices"
+  },
+  "footer": {
+    "tagline": "Transforma tus fotos en avatares pixel únicos con tecnología potenciada por IA. Tu cara, pixelada a la perfección.",
+    "product": "Producto",
+    "resources": "Recursos",
+    "legal": "Legal",
+    "blog": "Blog",
+    "apiDocs": "Documentación API",
+    "designSystem": "Sistema de Diseño",
+    "support": "Soporte",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio",
+    "cookiePolicy": "Política de Cookies",
+    "featuredOn": "Presentado En",
+    "copyright": "Todos los derechos reservados."
+  }
+}

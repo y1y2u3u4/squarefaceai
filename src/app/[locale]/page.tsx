@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -22,6 +23,7 @@ import UseCases from '@/components/landing/UseCases';
 import SEOContent from '@/components/landing/SEOContent';
 
 export default function Home() {
+  const t = useTranslations();
   const [isLoading, setIsLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [generatedAvatar, setGeneratedAvatar] = useState<string | null>(null);

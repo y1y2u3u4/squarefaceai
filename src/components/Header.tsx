@@ -3,9 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import SquareFaceLogo from './SquareFaceLogo';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
+  const t = useTranslations('header');
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,10 +25,10 @@ export default function Header() {
   };
 
   const navItems = [
-    { href: '#how-it-works', label: 'How It Works' },
-    { href: '#features', label: 'Features' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: '#faq', label: 'FAQ' },
+    { href: '#how-it-works', label: t('howItWorks') },
+    { href: '#features', label: t('features') },
+    { href: '#pricing', label: t('pricing') },
+    { href: '#faq', label: t('faq') },
   ];
 
   return (
@@ -73,19 +76,22 @@ export default function Header() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <button
-              onClick={handleGetStarted}
-              className="pixel-button py-2 px-5 text-sm"
+          {/* Language Switcher & CTA Button */}
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              Get Started
-            </button>
-          </motion.div>
+              <button
+                onClick={handleGetStarted}
+                className="pixel-button py-2 px-5 text-sm hidden sm:block"
+              >
+                {t('getStarted')}
+              </button>
+            </motion.div>
+          </div>
         </div>
       </nav>
     </motion.header>

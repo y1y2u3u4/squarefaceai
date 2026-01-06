@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "title": "SquareFaceAI - Ücretsiz AI Piksel Avatar Oluşturucu | Kare Yüz Simge Yapıcı",
+    "description": "Fotoğrafınızı saniyeler içinde sevimli bir kare yüzlü piksel avatara dönüştürün. Discord, Twitter ve oyun profilleri için ücretsiz AI avatar oluşturucu."
+  },
+  "header": {
+    "howItWorks": "Nasıl Çalışır",
+    "features": "Özellikler",
+    "pricing": "Fiyatlandırma",
+    "faq": "SSS",
+    "getStarted": "Başla"
+  },
+  "hero": {
+    "badge": "AI Kare Yüz Oluşturucu",
+    "titleLine1": "Benzersiz",
+    "titleHighlight": "Kare Yüz",
+    "titleLine2": "Piksel Avatarınızı Oluşturun",
+    "subtitleShort": "Fotoğrafları saniyeler içinde piksel avatarlara dönüştürün.",
+    "subtitleFull": "Fotoğrafınızı saniyeler içinde sevimli bir kare yüzlü piksel avatara dönüştürün. Sosyal medya, oyun profilleri ve dijital kimlikler için mükemmel.",
+    "ctaPrimary": "Ücretsiz Avatar Oluştur",
+    "ctaSecondary": "Örnekleri Gör",
+    "featureFree": "Ücretsiz",
+    "featureNoLogin": "Giriş yok",
+    "featureInstant": "Anında"
+  },
+  "input": {
+    "title": "Piksel Avatarınızı Oluşturun",
+    "generateRandom": "Rastgele Avatar Oluştur",
+    "generating": "Oluşturuluyor...",
+    "customize": "Özelleştir",
+    "hideOptions": "Seçenekleri gizle",
+    "or": "veya",
+    "uploadPhoto": "Fotoğrafınızı yükleyin",
+    "uploadSubtitle": "Kişiselleştirilmiş avatar için"
+  },
+  "result": {
+    "title": "Piksel Avatarınız Hazır!",
+    "subtitle": "İndirin, düzenleyin veya yenisini oluşturun.",
+    "download": "İndir",
+    "new": "Yeni",
+    "editAvatar": "Avatarı Düzenle",
+    "privacyNote": "Fotoğrafınız güvenli bir şekilde işlenir. Gizliliğinize değer veriyoruz!"
+  },
+  "trustIndicators": {
+    "noSignup": "Kayıt Yok",
+    "noSignupDesc": "Anında başlayın",
+    "privacySafe": "Gizlilik Güvencesi",
+    "privacySafeDesc": "Fotoğraflar saklanmaz",
+    "fastGeneration": "10sn Oluşturma",
+    "fastGenerationDesc": "Süper hızlı"
+  },
+  "logoBar": {
+    "trustedBy": "Kullanıcılar tarafından güveniliyor"
+  },
+  "examples": {
+    "title": "Nelerin Mümkün Olduğunu Görün",
+    "subtitle": "Her avatar benzersiz, tıpkı siz gibi. İşte AI'mızın oluşturabileceği bazı örnekler.",
+    "allStyles": "Tüm Stiller",
+    "customizationNote": "{count}+ özelleştirme seçeneği mevcut!",
+    "tryCreating": "Kendinizinkini oluşturmayı deneyin"
+  },
+  "useCases": {
+    "title": "Her Platform İçin Mükemmel",
+    "subtitle": "Kare yüz avatarınız her yerde harika görünür. İşte bazı popüler kullanım alanları.",
+    "discord": {
+      "name": "Discord",
+      "desc": "Benzersiz bir piksel avatarla oyun sunucularında öne çıkın"
+    },
+    "twitter": {
+      "name": "Twitter / X",
+      "desc": "Daha fazla takipçi çeken dikkat çekici bir profil oluşturun"
+    },
+    "youtube": {
+      "name": "YouTube",
+      "desc": "Akılda kalıcı bir kanal avatarıyla markanızı oluşturun"
+    },
+    "gaming": {
+      "name": "Oyun",
+      "desc": "Steam, Twitch ve oyun profilleri için mükemmel"
+    },
+    "tiktok": {
+      "name": "TikTok",
+      "desc": "Sevimli ve trendy bir avatarla dikkat çekin"
+    },
+    "nft": {
+      "name": "NFT Profili",
+      "desc": "Tüm platformlarda Web3 kimliğiniz olarak kullanın"
+    },
+    "anywhere": "...ve benzersiz bir avatara ihtiyaç duyduğunuz her yerde!",
+    "createNow": "Şimdi Avatarınızı Oluşturun"
+  },
+  "features": {
+    "title": "Neden SquareFaceAI'ı Seçmelisiniz?",
+    "subtitle": "Biz sadece başka bir avatar oluşturucu değiliz. İşte bizi farklı kılan özellikler.",
+    "fast": {
+      "title": "Işık Hızında",
+      "desc": "Piksel avatarınızı sadece 10 saniyede alın. Artık bekleme yok!"
+    },
+    "privacy": {
+      "title": "Gizlilik Öncelikli",
+      "desc": "Fotoğraflarınız asla saklanmaz. Güvenli işlenir ve hemen silinir."
+    },
+    "ai": {
+      "title": "AI Destekli",
+      "desc": "Gelişmiş AI benzersiz özelliklerinizi analiz ederek kişiselleştirilmiş avatar oluşturur."
+    },
+    "quality": {
+      "title": "Yüksek Kalite",
+      "desc": "Her yerde net ve keskin avatarlar için 1024px'e kadar dışa aktarın."
+    },
+    "noSignup": {
+      "title": "Kayıt Yok",
+      "desc": "Hemen oluşturmaya başlayın. Ücretsiz katman için hesap gerekmez."
+    },
+    "styles": {
+      "title": "Çoklu Stiller",
+      "desc": "Piksel art, karikatür, minimalist ve daha fazla stil arasından seçin."
+    }
+  },
+  "howItWorks": {
+    "title": "Nasıl Çalışır",
+    "subtitle": "Fotoğrafınızı sadece 3 basit adımda piksel avatara dönüştürün. Tasarım becerisi gerekmez!",
+    "step1": {
+      "title": "Fotoğrafınızı Yükleyin",
+      "desc": "Sürükleyip bırakın veya yüklemek için tıklayın. JPG, PNG, WEBP destekler."
+    },
+    "step2": {
+      "title": "AI Sihri Başlıyor",
+      "desc": "AI'mız yüz özelliklerinizi analiz eder ve benzersiz avatarınızı oluşturur."
+    },
+    "step3": {
+      "title": "İndirin & Paylaşın",
+      "desc": "Avatarınızı anında alın. Discord, Twitter, her yerde kullanın!"
+    },
+    "avgTime": "Ortalama oluşturma süresi: 10 saniye"
+  },
+  "testimonials": {
+    "title": "Kullanıcılarımız Ne Diyor",
+    "subtitle": "Benzersiz piksel avatarlar oluşturan binlerce memnun kullanıcıya katılın"
+  },
+  "pricing": {
+    "title": "Basit Fiyatlandırma",
+    "subtitle": "Size en uygun planı seçin. Gizli ücret yok, istediğiniz zaman iptal edin.",
+    "free": {
+      "name": "Ücretsiz",
+      "price": "₺0",
+      "period": "/ay",
+      "desc": "Deneyin, kredi kartı gerekmez",
+      "features": {
+        "avatars": "Günde 3 avatar",
+        "resolution": "256px çözünürlük",
+        "styles": "Temel stiller",
+        "use": "Sadece kişisel kullanım"
+      },
+      "cta": "Ücretsiz Başla"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "₺149",
+      "period": "/ay",
+      "desc": "İçerik üreticileri için sınırsız oluşturma",
+      "badge": "En Popüler",
+      "features": {
+        "avatars": "Sınırsız avatar",
+        "resolution": "1024px'e kadar çözünürlük",
+        "styles": "Tüm stiller açık",
+        "priority": "Öncelikli işleme",
+        "commercial": "Ticari lisans",
+        "support": "E-posta desteği"
+      },
+      "cta": "Pro'ya Yükselt"
+    },
+    "guarantee": "Tüm ücretli planlarda 30 gün para iade garantisi"
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "subtitle": "SquareFaceAI hakkında bilmeniz gereken her şey",
+    "questions": {
+      "howItWorks": {
+        "q": "SquareFaceAI nasıl çalışır?",
+        "a": "AI'mız yüklediğiniz fotoğrafı analiz eder, temel yüz özelliklerini tanımlar ve benzerliğinizi koruyarak benzersiz bir piksel tarzı avatara dönüştürür."
+      },
+      "photoStored": {
+        "q": "Fotoğrafım sunucularınızda saklanıyor mu?",
+        "a": "Hayır. Fotoğraflarınız gerçek zamanlı olarak işlenir ve avatarınız oluşturulduktan hemen sonra silinir. Orijinal görsellerinizi asla saklamayız."
+      },
+      "formats": {
+        "q": "Hangi görsel formatlarını destekliyorsunuz?",
+        "a": "JPG, PNG, WEBP ve HEIC/HEIF formatlarını destekliyoruz. Görseller yükleme sırasında otomatik olarak optimize edilir."
+      },
+      "commercial": {
+        "q": "Avatarı ticari olarak kullanabilir miyim?",
+        "a": "Ücretsiz katman avatarları sadece kişisel kullanım içindir. Pro aboneler sınırsız ticari kullanım için ticari lisans alır."
+      },
+      "sizes": {
+        "q": "Hangi boyutlar mevcut?",
+        "a": "Ücretsiz kullanıcılar 256px avatarlar alır. Pro kullanıcılar en yüksek kalite için 1024px'e kadar dışa aktarabilir."
+      },
+      "different": {
+        "q": "Bu diğer avatar oluşturuculardan nasıl farklı?",
+        "a": "SquareFaceAI, genel şablonlar yerine benzersiz özelliklerinizi yakalayan gerçekten kişiselleştirilmiş avatarlar oluşturmak için gelişmiş AI kullanır."
+      }
+    },
+    "stillQuestions": "Hala sorularınız mı var?",
+    "contactSupport": "Destek ekibimizle iletişime geçin"
+  },
+  "finalCta": {
+    "title": "Piksel Avatarınızı Oluşturmaya Hazır mısınız?",
+    "subtitle": "Benzersiz avatarlarını oluşturmuş binlerce kullanıcıya katılın. Saniyeler içinde başlayın, kredi kartı gerekmez.",
+    "ctaPrimary": "Başla - Ücretsiz!",
+    "ctaSecondary": "Fiyatları Gör",
+    "noCreditCard": "Kredi kartı gerekmez",
+    "cancelAnytime": "İstediğiniz zaman iptal edin",
+    "happyUsers": "10.000+ mutlu kullanıcı"
+  },
+  "footer": {
+    "tagline": "AI destekli teknoloji ile fotoğraflarınızı benzersiz piksel avatarlara dönüştürün. Yüzünüz, mükemmel pikselleştirilmiş.",
+    "product": "Ürün",
+    "resources": "Kaynaklar",
+    "legal": "Yasal",
+    "blog": "Blog",
+    "apiDocs": "API Dokümantasyonu",
+    "designSystem": "Tasarım Sistemi",
+    "support": "Destek",
+    "privacyPolicy": "Gizlilik Politikası",
+    "termsOfService": "Kullanım Şartları",
+    "cookiePolicy": "Çerez Politikası",
+    "featuredOn": "Öne Çıkanlar",
+    "copyright": "Tüm hakları saklıdır."
+  }
+}

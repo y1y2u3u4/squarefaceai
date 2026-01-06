@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "title": "SquareFaceAI - 免费AI像素头像生成器 | 方脸图标制作工具",
+    "description": "几秒钟内将照片转换为可爱的方脸像素头像。适用于Discord、Twitter、游戏档案的免费AI头像生成器。"
+  },
+  "header": {
+    "howItWorks": "使用方法",
+    "features": "功能特点",
+    "pricing": "价格",
+    "faq": "常见问题",
+    "getStarted": "开始使用"
+  },
+  "hero": {
+    "badge": "AI方脸生成器",
+    "titleLine1": "创建你的",
+    "titleHighlight": "方脸",
+    "titleLine2": "像素头像",
+    "subtitleShort": "几秒钟内将照片转换为像素头像。",
+    "subtitleFull": "几秒钟内将照片转换为可爱的方脸像素头像。完美适用于社交媒体、游戏档案和数字身份。",
+    "ctaPrimary": "免费创建头像",
+    "ctaSecondary": "查看示例",
+    "featureFree": "免费",
+    "featureNoLogin": "无需登录",
+    "featureInstant": "即时生成"
+  },
+  "input": {
+    "title": "生成你的像素头像",
+    "generateRandom": "随机生成头像",
+    "generating": "生成中...",
+    "customize": "自定义",
+    "hideOptions": "隐藏选项",
+    "or": "或者",
+    "uploadPhoto": "上传你的照片",
+    "uploadSubtitle": "获取个性化头像"
+  },
+  "result": {
+    "title": "你的像素头像已完成！",
+    "subtitle": "下载、编辑或创建新的头像。",
+    "download": "下载",
+    "new": "新建",
+    "editAvatar": "编辑头像",
+    "privacyNote": "你的照片已安全处理。我们重视你的隐私！"
+  },
+  "trustIndicators": {
+    "noSignup": "无需注册",
+    "noSignupDesc": "立即开始",
+    "privacySafe": "隐私安全",
+    "privacySafeDesc": "照片不存储",
+    "fastGeneration": "10秒生成",
+    "fastGenerationDesc": "超级快速"
+  },
+  "logoBar": {
+    "trustedBy": "受以下用户信赖"
+  },
+  "examples": {
+    "title": "看看有什么可能",
+    "subtitle": "每个头像都是独一无二的，就像你一样。这里是我们AI可以创建的一些示例。",
+    "allStyles": "所有风格",
+    "customizationNote": "超过{count}个自定义选项可用！",
+    "tryCreating": "尝试创建你自己的"
+  },
+  "useCases": {
+    "title": "适用于每个平台",
+    "subtitle": "你的方脸头像在任何地方都很棒。以下是一些热门用例。",
+    "discord": {
+      "name": "Discord",
+      "desc": "用独特的像素头像在游戏服务器中脱颖而出"
+    },
+    "twitter": {
+      "name": "Twitter / X",
+      "desc": "创建吸引眼球的档案，获得更多粉丝"
+    },
+    "youtube": {
+      "name": "YouTube",
+      "desc": "用令人难忘的频道头像建立你的品牌"
+    },
+    "gaming": {
+      "name": "游戏",
+      "desc": "完美适用于Steam、Twitch和游戏档案"
+    },
+    "tiktok": {
+      "name": "TikTok",
+      "desc": "用可爱时尚的头像引起关注"
+    },
+    "nft": {
+      "name": "NFT档案",
+      "desc": "作为你在各平台的Web3身份使用"
+    },
+    "anywhere": "...以及任何你需要独特头像的地方！",
+    "createNow": "立即创建你的头像"
+  },
+  "features": {
+    "title": "为什么选择SquareFaceAI？",
+    "subtitle": "我们不只是另一个头像生成器。看看是什么让我们与众不同。",
+    "fast": {
+      "title": "闪电般快速",
+      "desc": "只需10秒即可获得你的像素头像。无需再等待！"
+    },
+    "privacy": {
+      "title": "隐私优先",
+      "desc": "你的照片永不存储。安全处理后立即删除。"
+    },
+    "ai": {
+      "title": "AI驱动",
+      "desc": "高级AI分析你的独特特征，创建个性化头像。"
+    },
+    "quality": {
+      "title": "高质量",
+      "desc": "导出高达1024px，在任何地方都能获得清晰锐利的头像。"
+    },
+    "noSignup": {
+      "title": "无需注册",
+      "desc": "立即开始创建。免费版无需账户。"
+    },
+    "styles": {
+      "title": "多种风格",
+      "desc": "从像素艺术、卡通、简约等多种风格中选择。"
+    }
+  },
+  "howItWorks": {
+    "title": "使用方法",
+    "subtitle": "只需3个简单步骤，将照片转换为像素头像。无需设计技能！",
+    "step1": {
+      "title": "上传你的照片",
+      "desc": "拖放或点击上传。支持JPG、PNG、WEBP。"
+    },
+    "step2": {
+      "title": "AI魔法发生",
+      "desc": "我们的AI分析你的面部特征，创建你独特的头像。"
+    },
+    "step3": {
+      "title": "下载并分享",
+      "desc": "即时获取你的头像。在Discord、Twitter任何地方使用！"
+    },
+    "avgTime": "平均生成时间：10秒"
+  },
+  "testimonials": {
+    "title": "用户评价",
+    "subtitle": "加入数千名正在创建独特像素头像的满意用户"
+  },
+  "pricing": {
+    "title": "简单定价",
+    "subtitle": "选择最适合你的方案。无隐藏费用，随时取消。",
+    "free": {
+      "name": "免费",
+      "price": "¥0",
+      "period": "/月",
+      "desc": "试用一下，无需信用卡",
+      "features": {
+        "avatars": "每天3个头像",
+        "resolution": "256px分辨率",
+        "styles": "基础风格",
+        "use": "仅限个人使用"
+      },
+      "cta": "免费开始"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "¥35",
+      "period": "/月",
+      "desc": "为创作者提供无限创作",
+      "badge": "最受欢迎",
+      "features": {
+        "avatars": "无限头像",
+        "resolution": "高达1024px分辨率",
+        "styles": "所有风格解锁",
+        "priority": "优先处理",
+        "commercial": "商业许可",
+        "support": "邮件支持"
+      },
+      "cta": "升级到Pro"
+    },
+    "guarantee": "所有付费方案30天退款保证"
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "关于SquareFaceAI你需要知道的一切",
+    "questions": {
+      "howItWorks": {
+        "q": "SquareFaceAI是如何工作的？",
+        "a": "我们的AI分析你上传的照片，识别关键面部特征，并将其转换为独特的像素风格头像，同时保持你的相似度。"
+      },
+      "photoStored": {
+        "q": "我的照片会存储在你们的服务器上吗？",
+        "a": "不会。你的照片会实时处理，并在头像生成后立即删除。我们从不存储你的原始图片。"
+      },
+      "formats": {
+        "q": "支持哪些图片格式？",
+        "a": "我们支持JPG、PNG、WEBP和HEIC/HEIF格式。图片在上传时会自动优化。"
+      },
+      "commercial": {
+        "q": "我可以商业使用头像吗？",
+        "a": "免费版头像仅供个人使用。Pro订阅者可获得无限商业使用的商业许可。"
+      },
+      "sizes": {
+        "q": "有哪些尺寸可用？",
+        "a": "免费用户获得256px头像。Pro用户可导出高达1024px以获得最高质量。"
+      },
+      "different": {
+        "q": "这与其他头像生成器有什么不同？",
+        "a": "SquareFaceAI使用高级AI创建真正个性化的头像，捕捉你的独特特征，而不只是通用模板。"
+      }
+    },
+    "stillQuestions": "还有问题？",
+    "contactSupport": "联系我们的支持团队"
+  },
+  "finalCta": {
+    "title": "准备好创建你的像素头像了吗？",
+    "subtitle": "加入已经创建独特头像的数千名用户。几秒钟内开始，无需信用卡。",
+    "ctaPrimary": "开始使用 - 免费！",
+    "ctaSecondary": "查看价格",
+    "noCreditCard": "无需信用卡",
+    "cancelAnytime": "随时取消",
+    "happyUsers": "10,000+满意用户"
+  },
+  "footer": {
+    "tagline": "使用AI技术将照片转换为独特的像素头像。你的脸，完美像素化。",
+    "product": "产品",
+    "resources": "资源",
+    "legal": "法律",
+    "blog": "博客",
+    "apiDocs": "API文档",
+    "designSystem": "设计系统",
+    "support": "支持",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "cookiePolicy": "Cookie政策",
+    "featuredOn": "媒体报道",
+    "copyright": "版权所有。"
+  }
+}

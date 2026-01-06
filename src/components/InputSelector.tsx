@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { Sparkles, ChevronDown, Loader2 } from 'lucide-react';
 import RandomOptions from './RandomOptions';
 import CompactUploadZone from './CompactUploadZone';
@@ -22,6 +23,7 @@ export default function InputSelector({
   error,
   onClearError,
 }: InputSelectorProps) {
+  const t = useTranslations('input');
   const [showCustomize, setShowCustomize] = useState(false);
   const [randomConfig, setRandomConfig] = useState<RandomConfig>(DEFAULT_RANDOM_CONFIG);
 
@@ -46,7 +48,7 @@ export default function InputSelector({
     <div className="space-y-3 md:space-y-4">
       {/* Header - Hidden on mobile since hero already has title */}
       <div className="hidden md:block text-center">
-        <h3 className="text-lg font-semibold text-gray-900">Generate Your Pixel Avatar</h3>
+        <h3 className="text-lg font-semibold text-gray-900">{t('title')}</h3>
       </div>
 
       {/* Primary CTA: Quick Random Generation */}
@@ -60,12 +62,12 @@ export default function InputSelector({
         {isLoading ? (
           <>
             <Loader2 className="w-5 h-5 animate-spin" />
-            Generating...
+            {t('generating')}
           </>
         ) : (
           <>
             <Sparkles className="w-5 h-5" />
-            Generate Random Avatar
+            {t('generateRandom')}
           </>
         )}
       </motion.button>
@@ -79,7 +81,7 @@ export default function InputSelector({
         <ChevronDown
           className={`w-4 h-4 transition-transform duration-200 ${showCustomize ? 'rotate-180' : ''}`}
         />
-        <span>{showCustomize ? 'Hide options' : 'Customize'}</span>
+        <span>{showCustomize ? t('hideOptions') : t('customize')}</span>
       </button>
 
       {/* Expandable Customization Options */}
@@ -111,7 +113,7 @@ export default function InputSelector({
           <div className="w-full border-t border-gray-200" />
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-white px-4 text-sm text-gray-400">or</span>
+          <span className="bg-white px-4 text-sm text-gray-400">{t('or')}</span>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Zap, Shield, UserX } from 'lucide-react';
@@ -18,6 +19,8 @@ interface HeroProps {
 }
 
 export default function Hero({ children }: HeroProps) {
+  const t = useTranslations('hero');
+  const tTrust = useTranslations('trustIndicators');
   return (
     <section className="min-h-[auto] md:min-h-screen pt-14 md:pt-28 pb-8 md:pb-16 px-4 md:px-6 relative overflow-hidden md:flex md:items-center">
       {/* Gallery Background - Hidden on mobile for cleaner look */}
@@ -39,7 +42,7 @@ export default function Hero({ children }: HeroProps) {
               className="gap-1.5 py-2 px-4 text-sm bg-white/80 backdrop-blur border-[var(--accent-primary)] text-[var(--accent-primary)]"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              AI Square Face Generator
+              {t('badge')}
             </Badge>
           </motion.div>
 
@@ -48,9 +51,9 @@ export default function Hero({ children }: HeroProps) {
             variants={fadeInUp}
             className="text-2xl md:text-6xl lg:text-7xl font-bold mb-3 md:mb-6 leading-tight text-gray-800"
           >
-            <span className="md:block">Create Your </span>
-            <span className="gradient-mint">Square Face</span>
-            <span className="block text-xl md:text-5xl lg:text-6xl mt-1 md:mt-0">Pixel Avatar</span>
+            <span className="md:block">{t('titleLine1')} </span>
+            <span className="gradient-mint">{t('titleHighlight')}</span>
+            <span className="block text-xl md:text-5xl lg:text-6xl mt-1 md:mt-0">{t('titleLine2')}</span>
           </motion.h1>
 
           {/* Subheadline - Shorter on mobile */}
@@ -58,9 +61,8 @@ export default function Hero({ children }: HeroProps) {
             variants={fadeInUp}
             className="text-sm md:text-xl text-gray-600 max-w-2xl mx-auto mb-4 md:mb-8"
           >
-            <span className="md:hidden">Transform photos into pixel avatars in seconds.</span>
-            <span className="hidden md:inline">Transform your photo into an adorable square-faced pixel avatar in seconds.
-            Perfect for social media, gaming profiles, and digital identities.</span>
+            <span className="md:hidden">{t('subtitleShort')}</span>
+            <span className="hidden md:inline">{t('subtitleFull')}</span>
           </motion.p>
 
           {/* CTA Buttons - Hidden on mobile, input card is the CTA */}
@@ -78,7 +80,7 @@ export default function Hero({ children }: HeroProps) {
                 onClick={() => document.getElementById('upload-zone')?.scrollIntoView({ behavior: 'smooth' })}
                 className="pixel-button py-3 px-8 text-lg"
               >
-                🎨 Create Free Avatar
+                🎨 {t('ctaPrimary')}
               </button>
             </motion.div>
             <motion.div
@@ -93,7 +95,7 @@ export default function Hero({ children }: HeroProps) {
                 className="border-2 border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
                 onClick={() => document.getElementById('examples')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                View Examples
+                {t('ctaSecondary')}
               </Button>
             </motion.div>
           </motion.div>
@@ -105,17 +107,17 @@ export default function Hero({ children }: HeroProps) {
           >
             <div className="flex items-center gap-1">
               <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400"></span>
-              <span>Free</span>
+              <span>{t('featureFree')}</span>
             </div>
             <span className="text-gray-300">•</span>
             <div className="flex items-center gap-1">
               <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-blue-400"></span>
-              <span>No login</span>
+              <span>{t('featureNoLogin')}</span>
             </div>
             <span className="text-gray-300">•</span>
             <div className="flex items-center gap-1">
               <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-purple-400"></span>
-              <span>Instant</span>
+              <span>{t('featureInstant')}</span>
             </div>
           </motion.div>
         </motion.div>
@@ -141,9 +143,9 @@ export default function Hero({ children }: HeroProps) {
           className="hidden md:flex flex-wrap items-center justify-center gap-4 md:gap-6"
         >
           {[
-            { icon: UserX, title: 'No Sign-up', desc: 'Start instantly', color: 'from-emerald-400 to-green-500' },
-            { icon: Shield, title: 'Privacy Safe', desc: 'Photos not stored', color: 'from-blue-400 to-cyan-500' },
-            { icon: Zap, title: '10s Generation', desc: 'Super fast', color: 'from-yellow-400 to-orange-500' },
+            { icon: UserX, titleKey: 'noSignup', descKey: 'noSignupDesc', color: 'from-emerald-400 to-green-500' },
+            { icon: Shield, titleKey: 'privacySafe', descKey: 'privacySafeDesc', color: 'from-blue-400 to-cyan-500' },
+            { icon: Zap, titleKey: 'fastGeneration', descKey: 'fastGenerationDesc', color: 'from-yellow-400 to-orange-500' },
           ].map((item, i) => (
             <motion.div key={i} variants={fadeInUp}>
               <motion.div
@@ -156,8 +158,8 @@ export default function Hero({ children }: HeroProps) {
                   <item.icon className="w-5 h-5 text-white" />
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-semibold text-gray-800">{item.title}</div>
-                  <div className="text-xs text-gray-500">{item.desc}</div>
+                  <div className="text-sm font-semibold text-gray-800">{tTrust(item.titleKey)}</div>
+                  <div className="text-xs text-gray-500">{tTrust(item.descKey)}</div>
                 </div>
               </motion.div>
             </motion.div>

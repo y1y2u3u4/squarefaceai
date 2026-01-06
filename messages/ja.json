@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "title": "SquareFaceAI - 無料AIピクセルアバタージェネレーター | 四角顔アイコンメーカー",
+    "description": "数秒で写真を可愛い四角顔ピクセルアバターに変換。Discord、Twitter、ゲームプロフィール用の無料AIアバタージェネレーター。"
+  },
+  "header": {
+    "howItWorks": "使い方",
+    "features": "機能",
+    "pricing": "料金",
+    "faq": "FAQ",
+    "getStarted": "始める"
+  },
+  "hero": {
+    "badge": "AI四角顔ジェネレーター",
+    "titleLine1": "あなただけの",
+    "titleHighlight": "四角顔",
+    "titleLine2": "ピクセルアバターを作成",
+    "subtitleShort": "写真を数秒でピクセルアバターに変換。",
+    "subtitleFull": "数秒で写真を可愛い四角顔ピクセルアバターに変換。SNS、ゲームプロフィール、デジタルアイデンティティに最適。",
+    "ctaPrimary": "無料でアバターを作成",
+    "ctaSecondary": "サンプルを見る",
+    "featureFree": "無料",
+    "featureNoLogin": "ログイン不要",
+    "featureInstant": "即時"
+  },
+  "input": {
+    "title": "ピクセルアバターを生成",
+    "generateRandom": "ランダムアバターを生成",
+    "generating": "生成中...",
+    "customize": "カスタマイズ",
+    "hideOptions": "オプションを隠す",
+    "or": "または",
+    "uploadPhoto": "写真をアップロード",
+    "uploadSubtitle": "パーソナライズされたアバター用"
+  },
+  "result": {
+    "title": "ピクセルアバターが完成しました！",
+    "subtitle": "ダウンロード、編集、または新しいものを作成。",
+    "download": "ダウンロード",
+    "new": "新規",
+    "editAvatar": "アバターを編集",
+    "privacyNote": "写真は安全に処理されます。プライバシーを大切にしています！"
+  },
+  "trustIndicators": {
+    "noSignup": "登録不要",
+    "noSignupDesc": "すぐに開始",
+    "privacySafe": "プライバシー保護",
+    "privacySafeDesc": "写真は保存されません",
+    "fastGeneration": "10秒で生成",
+    "fastGenerationDesc": "超高速"
+  },
+  "logoBar": {
+    "trustedBy": "以下のユーザーに信頼されています"
+  },
+  "examples": {
+    "title": "可能性をご覧ください",
+    "subtitle": "すべてのアバターはユニーク、あなたと同じように。AIが作成できる例をご紹介します。",
+    "allStyles": "全スタイル",
+    "customizationNote": "{count}以上のカスタマイズオプションが利用可能！",
+    "tryCreating": "自分のアバターを作ってみる"
+  },
+  "useCases": {
+    "title": "あらゆるプラットフォームに最適",
+    "subtitle": "四角顔アバターはどこでも活躍します。人気の使用例をご紹介。",
+    "discord": {
+      "name": "Discord",
+      "desc": "ユニークなピクセルアバターでゲームサーバーで目立とう"
+    },
+    "twitter": {
+      "name": "Twitter / X",
+      "desc": "フォロワーが増える目を引くプロフィールを作成"
+    },
+    "youtube": {
+      "name": "YouTube",
+      "desc": "印象的なチャンネルアバターでブランドを構築"
+    },
+    "gaming": {
+      "name": "ゲーム",
+      "desc": "Steam、Twitch、ゲームプロフィールに最適"
+    },
+    "tiktok": {
+      "name": "TikTok",
+      "desc": "可愛くてトレンディなアバターで注目を集める"
+    },
+    "nft": {
+      "name": "NFTプロフィール",
+      "desc": "全プラットフォームでのWeb3アイデンティティとして使用"
+    },
+    "anywhere": "...他にもユニークなアバターが必要な場所で！",
+    "createNow": "今すぐアバターを作成"
+  },
+  "features": {
+    "title": "なぜSquareFaceAIを選ぶのか？",
+    "subtitle": "私たちは単なるアバタージェネレーターではありません。違いをご覧ください。",
+    "fast": {
+      "title": "超高速",
+      "desc": "わずか10秒でピクセルアバターを取得。もう待つ必要はありません！"
+    },
+    "privacy": {
+      "title": "プライバシー優先",
+      "desc": "写真は保存されません。安全に処理され、即座に削除されます。"
+    },
+    "ai": {
+      "title": "AI搭載",
+      "desc": "高度なAIがあなたのユニークな特徴を分析し、パーソナライズされたアバターを作成。"
+    },
+    "quality": {
+      "title": "高品質",
+      "desc": "最大1024pxでエクスポート、どこでも鮮明で美しいアバター。"
+    },
+    "noSignup": {
+      "title": "登録不要",
+      "desc": "すぐに作成開始。無料プランはアカウント不要。"
+    },
+    "styles": {
+      "title": "複数のスタイル",
+      "desc": "ピクセルアート、カートゥーン、ミニマリストなど様々なスタイルから選択。"
+    }
+  },
+  "howItWorks": {
+    "title": "使い方",
+    "subtitle": "3つの簡単なステップで写真をピクセルアバターに変換。デザインスキル不要！",
+    "step1": {
+      "title": "写真をアップロード",
+      "desc": "ドラッグ＆ドロップまたはクリックでアップロード。JPG、PNG、WEBP対応。"
+    },
+    "step2": {
+      "title": "AIマジック発動",
+      "desc": "AIが顔の特徴を分析し、ユニークなアバターを作成。"
+    },
+    "step3": {
+      "title": "ダウンロード＆シェア",
+      "desc": "アバターを即座に取得。Discord、Twitter、どこでも使える！"
+    },
+    "avgTime": "平均生成時間：10秒"
+  },
+  "testimonials": {
+    "title": "ユーザーの声",
+    "subtitle": "ユニークなピクセルアバターを作成している数千人の満足したユーザーに参加"
+  },
+  "pricing": {
+    "title": "シンプルな料金",
+    "subtitle": "あなたに最適なプランを選択。隠れた料金なし、いつでもキャンセル可能。",
+    "free": {
+      "name": "無料",
+      "price": "¥0",
+      "period": "/月",
+      "desc": "試してみて、クレジットカード不要",
+      "features": {
+        "avatars": "1日3アバター",
+        "resolution": "256px解像度",
+        "styles": "基本スタイル",
+        "use": "個人利用のみ"
+      },
+      "cta": "無料で始める"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "¥750",
+      "period": "/月",
+      "desc": "クリエイターのための無制限作成",
+      "badge": "人気No.1",
+      "features": {
+        "avatars": "無制限アバター",
+        "resolution": "最大1024px解像度",
+        "styles": "全スタイル解放",
+        "priority": "優先処理",
+        "commercial": "商用ライセンス",
+        "support": "メールサポート"
+      },
+      "cta": "Proにアップグレード"
+    },
+    "guarantee": "有料プラン30日間返金保証"
+  },
+  "faq": {
+    "title": "よくある質問",
+    "subtitle": "SquareFaceAIについて知っておくべきことすべて",
+    "questions": {
+      "howItWorks": {
+        "q": "SquareFaceAIはどのように機能しますか？",
+        "a": "AIがアップロードされた写真を分析し、主要な顔の特徴を識別し、あなたの似顔絵を維持しながらユニークなピクセルスタイルのアバターに変換します。"
+      },
+      "photoStored": {
+        "q": "写真はサーバーに保存されますか？",
+        "a": "いいえ。写真はリアルタイムで処理され、アバター生成後すぐに削除されます。オリジナル画像は一切保存しません。"
+      },
+      "formats": {
+        "q": "どの画像フォーマットに対応していますか？",
+        "a": "JPG、PNG、WEBP、HEIC/HEIFフォーマットに対応。画像はアップロード時に自動最適化されます。"
+      },
+      "commercial": {
+        "q": "アバターを商用利用できますか？",
+        "a": "無料プランのアバターは個人利用のみです。Proサブスクライバーは無制限の商用利用のための商用ライセンスを取得できます。"
+      },
+      "sizes": {
+        "q": "どのサイズが利用可能ですか？",
+        "a": "無料ユーザーは256pxアバターを取得。Proユーザーは最高品質の1024pxまでエクスポート可能。"
+      },
+      "different": {
+        "q": "他のアバタージェネレーターとの違いは？",
+        "a": "SquareFaceAIは高度なAIを使用して、一般的なテンプレートではなく、あなたのユニークな特徴を捉えた真にパーソナライズされたアバターを作成します。"
+      }
+    },
+    "stillQuestions": "まだ質問がありますか？",
+    "contactSupport": "サポートチームにお問い合わせください"
+  },
+  "finalCta": {
+    "title": "ピクセルアバターを作る準備はできましたか？",
+    "subtitle": "すでにユニークなアバターを作成した数千人のユーザーに参加。数秒で開始、クレジットカード不要。",
+    "ctaPrimary": "始める - 無料です！",
+    "ctaSecondary": "料金を見る",
+    "noCreditCard": "クレジットカード不要",
+    "cancelAnytime": "いつでもキャンセル可能",
+    "happyUsers": "10,000人以上の満足ユーザー"
+  },
+  "footer": {
+    "tagline": "AI技術で写真をユニークなピクセルアバターに変換。あなたの顔、完璧にピクセル化。",
+    "product": "製品",
+    "resources": "リソース",
+    "legal": "法的情報",
+    "blog": "ブログ",
+    "apiDocs": "APIドキュメント",
+    "designSystem": "デザインシステム",
+    "support": "サポート",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "cookiePolicy": "Cookieポリシー",
+    "featuredOn": "掲載メディア",
+    "copyright": "全著作権所有。"
+  }
+}
