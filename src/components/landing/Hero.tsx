@@ -19,19 +19,21 @@ interface HeroProps {
 
 export default function Hero({ children }: HeroProps) {
   return (
-    <section className="min-h-screen pt-28 pb-16 px-6 relative overflow-hidden flex items-center">
-      {/* Gallery Background - Shows avatar examples */}
-      <GalleryBackground />
+    <section className="min-h-[auto] md:min-h-screen pt-14 md:pt-28 pb-8 md:pb-16 px-4 md:px-6 relative overflow-hidden md:flex md:items-center">
+      {/* Gallery Background - Hidden on mobile for cleaner look */}
+      <div className="hidden md:block">
+        <GalleryBackground />
+      </div>
 
       <div className="container mx-auto relative z-10">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="max-w-4xl mx-auto text-center mb-10"
+          className="max-w-4xl mx-auto text-center mb-4 md:mb-10"
         >
-          {/* Badge Announcement */}
-          <motion.div variants={fadeInUp} className="inline-block mb-6">
+          {/* Badge Announcement - Hidden on mobile */}
+          <motion.div variants={fadeInUp} className="hidden md:inline-block mb-6">
             <Badge
               variant="outline"
               className="gap-1.5 py-2 px-4 text-sm bg-white/80 backdrop-blur border-[var(--accent-primary)] text-[var(--accent-primary)]"
@@ -44,27 +46,27 @@ export default function Hero({ children }: HeroProps) {
           {/* Main Headline */}
           <motion.h1
             variants={fadeInUp}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-gray-800"
+            className="text-2xl md:text-6xl lg:text-7xl font-bold mb-3 md:mb-6 leading-tight text-gray-800"
           >
-            Create Your Unique{' '}
+            <span className="md:block">Create Your </span>
             <span className="gradient-mint">Square Face</span>
-            <br />
-            <span className="text-3xl md:text-5xl lg:text-6xl">Pixel Avatar</span>
+            <span className="block text-xl md:text-5xl lg:text-6xl mt-1 md:mt-0">Pixel Avatar</span>
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* Subheadline - Shorter on mobile */}
           <motion.p
             variants={fadeInUp}
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8"
+            className="text-sm md:text-xl text-gray-600 max-w-2xl mx-auto mb-4 md:mb-8"
           >
-            Transform your photo into an adorable square-faced pixel avatar in seconds.
-            Perfect for social media, gaming profiles, and digital identities.
+            <span className="md:hidden">Transform photos into pixel avatars in seconds.</span>
+            <span className="hidden md:inline">Transform your photo into an adorable square-faced pixel avatar in seconds.
+            Perfect for social media, gaming profiles, and digital identities.</span>
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Hidden on mobile, input card is the CTA */}
           <motion.div
             variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
+            className="hidden md:flex flex-col sm:flex-row gap-4 justify-center mb-8"
           >
             <motion.div
               initial="rest"
@@ -96,24 +98,24 @@ export default function Hero({ children }: HeroProps) {
             </motion.div>
           </motion.div>
 
-          {/* Feature Highlights */}
+          {/* Feature Highlights - Simplified on mobile */}
           <motion.div
             variants={fadeInUp}
-            className="flex items-center justify-center gap-4 text-sm text-gray-500"
+            className="flex items-center justify-center gap-2 md:gap-4 text-xs md:text-sm text-gray-500 mb-2 md:mb-0"
           >
-            <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-green-400"></span>
-              <span>Free to use</span>
+            <div className="flex items-center gap-1">
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400"></span>
+              <span>Free</span>
             </div>
             <span className="text-gray-300">•</span>
-            <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-blue-400"></span>
-              <span>No login required</span>
+            <div className="flex items-center gap-1">
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-blue-400"></span>
+              <span>No login</span>
             </div>
             <span className="text-gray-300">•</span>
-            <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-purple-400"></span>
-              <span>Instant download</span>
+            <div className="flex items-center gap-1">
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-purple-400"></span>
+              <span>Instant</span>
             </div>
           </motion.div>
         </motion.div>
@@ -123,20 +125,20 @@ export default function Hero({ children }: HeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={smooth}
-          className="max-w-2xl mx-auto mb-12"
+          className="max-w-2xl mx-auto mb-6 md:mb-12"
           id="upload-zone"
         >
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50">
+          <div className="bg-white/95 md:bg-white/90 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg md:shadow-xl border border-gray-100 md:border-white/50">
             {children}
           </div>
         </motion.div>
 
-        {/* Trust Indicators */}
+        {/* Trust Indicators - Hidden on mobile, shown in compact form above */}
         <motion.div
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
+          className="hidden md:flex flex-wrap items-center justify-center gap-4 md:gap-6"
         >
           {[
             { icon: UserX, title: 'No Sign-up', desc: 'Start instantly', color: 'from-emerald-400 to-green-500' },

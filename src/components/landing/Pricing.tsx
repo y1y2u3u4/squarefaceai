@@ -1,10 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Check, X, Sparkles } from 'lucide-react';
+import { Check, X, Sparkles, Loader2 } from 'lucide-react';
 import {
   slowStagger,
   staggerItem,
@@ -15,62 +16,90 @@ import {
   buttonPress,
   smooth
 } from '@/lib/motion';
+import { trackPaymentEvent } from '@/lib/analytics';
+
+type PlanId = 'free' | 'pro';
 
 export default function Pricing() {
-  const plans = [
+  const [loadingPlan, setLoadingPlan] = useState<PlanId | null>(null);
+
+  const handleCheckout = async (planId: PlanId) => {
+    if (planId === 'free') {
+      document.getElementById('upload-zone')?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    setLoadingPlan(planId);
+    trackPaymentEvent({ action: 'checkout_initiated', plan: planId });
+
+    try {
+      const response = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: planId }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Failed to start checkout. Please try again.');
+      }
+    } catch {
+      alert('Failed to start checkout. Please try again.');
+    } finally {
+      setLoadingPlan(null);
+    }
+  };
+
+  const plans: Array<{
+    id: PlanId;
+    name: string;
+    price: string;
+    period: string;
+    description: string;
+    features: Array<{ text: string; included: boolean }>;
+    cta: string;
+    popular: boolean;
+    gradient: string;
+  }> = [
     {
+      id: 'free',
       name: 'Free',
       price: '$0',
-      period: '/mo',
-      description: 'Perfect for trying out SquareFaceAI',
+      period: '',
+      description: 'Try it out, no credit card required',
       features: [
-        { text: '5 avatars per day', included: true },
+        { text: '3 avatars per day', included: true },
         { text: '256px resolution', included: true },
-        { text: 'Watermark on images', included: true },
-        { text: 'Basic support', included: true },
-        { text: 'High resolution export', included: false },
+        { text: 'Basic styles', included: true },
+        { text: 'Personal use only', included: true },
+        { text: 'High resolution', included: false },
         { text: 'Priority processing', included: false },
         { text: 'Commercial use', included: false },
       ],
-      cta: 'Get Started Free',
+      cta: 'Start Free',
       popular: false,
       gradient: 'linear-gradient(to bottom right, var(--color-gray-from), var(--color-gray-to))',
     },
     {
+      id: 'pro',
       name: 'Pro',
       price: '$4.99',
       period: '/mo',
-      description: 'For serious creators and professionals',
+      description: 'Unlimited creation for creators',
       features: [
         { text: 'Unlimited avatars', included: true },
         { text: 'Up to 1024px resolution', included: true },
-        { text: 'No watermark', included: true },
+        { text: 'All styles unlocked', included: true },
         { text: 'Priority processing', included: true },
-        { text: 'Commercial use license', included: true },
-        { text: 'Advanced styles', included: true },
+        { text: 'Commercial license', included: true },
         { text: 'Email support', included: true },
       ],
       cta: 'Upgrade to Pro',
       popular: true,
       gradient: 'from-[var(--accent-primary)] to-[var(--accent-secondary)]',
-    },
-    {
-      name: 'Team',
-      price: '$9.99',
-      period: '/mo',
-      description: 'For teams and agencies',
-      features: [
-        { text: 'Everything in Pro', included: true },
-        { text: 'Team sharing & collaboration', included: true },
-        { text: 'API access (coming soon)', included: true },
-        { text: 'Bulk processing', included: true },
-        { text: 'Custom branding', included: true },
-        { text: 'Priority support', included: true },
-        { text: 'Usage analytics', included: true },
-      ],
-      cta: 'Contact Sales',
-      popular: false,
-      gradient: 'linear-gradient(to bottom right, var(--color-yellow-from), var(--color-yellow-to))',
     },
   ];
 
@@ -97,7 +126,7 @@ export default function Pricing() {
           whileInView="visible"
           viewport={viewportConfig}
           variants={slowStagger}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto"
         >
           {plans.map((plan, index) => {
             const isPro = plan.popular;
@@ -191,8 +220,17 @@ export default function Pricing() {
                         size="lg"
                         variant={isPro ? 'default' : 'secondary'}
                         className="w-full"
+                        onClick={() => handleCheckout(plan.id)}
+                        disabled={loadingPlan !== null}
                       >
-                        {plan.cta}
+                        {loadingPlan === plan.id ? (
+                          <>
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          plan.cta
+                        )}
                       </Button>
                     </motion.div>
                   </Card>

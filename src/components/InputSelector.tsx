@@ -43,9 +43,9 @@ export default function InputSelector({
   };
 
   return (
-    <div className="pixel-card p-6 space-y-4">
-      {/* Header */}
-      <div className="text-center">
+    <div className="space-y-3 md:space-y-4">
+      {/* Header - Hidden on mobile since hero already has title */}
+      <div className="hidden md:block text-center">
         <h3 className="text-lg font-semibold text-gray-900">Generate Your Pixel Avatar</h3>
       </div>
 
@@ -55,7 +55,7 @@ export default function InputSelector({
         disabled={isLoading}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className="w-full py-4 px-6 pixel-button text-lg inline-flex items-center justify-center gap-2 disabled:opacity-50"
+        className="w-full py-3 md:py-4 px-4 md:px-6 pixel-button text-base md:text-lg inline-flex items-center justify-center gap-2 disabled:opacity-50"
       >
         {isLoading ? (
           <>

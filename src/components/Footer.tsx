@@ -158,6 +158,19 @@ export default function Footer() {
                 className="h-8"
               />
             </a>
+            <a
+              href="https://www.toolpilot.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="https://www.toolpilot.ai/cdn/shop/files/f-w_690x151_crop_center.png"
+                alt="Featured on ToolPilot"
+                height="32"
+                className="h-8"
+              />
+            </a>
           </div>
         </div>
 

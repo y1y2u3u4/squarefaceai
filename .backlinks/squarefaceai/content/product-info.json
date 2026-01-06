@@ -1,0 +1,74 @@
+{
+  "name": "SquareFaceAI",
+  "url": "https://squarefaceai.com",
+  "tagline": "Free AI Pixel Avatar Generator",
+  "category": "AI Tools",
+  "subcategory": ["Avatar Generator", "Image Generation", "Design Tools"],
+  "pricing": {
+    "model": "freemium",
+    "free_tier": true,
+    "paid_plans": [
+      {
+        "name": "Pro",
+        "price": "$4.99/mo",
+        "features": ["Unlimited avatars", "1024px resolution", "All styles", "Commercial license"]
+      }
+    ]
+  },
+  "social": {
+    "twitter": "https://twitter.com/squarefaceai",
+    "github": "https://github.com/squarefaceai",
+    "discord": "https://discord.gg/squarefaceai"
+  },
+  "meta": {
+    "title": "SquareFaceAI - Free AI Pixel Avatar Generator | Square Face Icon Maker",
+    "description": "Transform your photo into a unique square face pixel avatar with AI. Free online pixel avatar generator for Discord, Twitter, gaming profiles. Create cute pixel art avatars in 10 seconds - no signup required!",
+    "keywords": "square face avatar generator,pixel avatar maker,ai avatar generator from photo,discord avatar generator,pixel art avatar,square face icon generator,photo to pixel avatar,free avatar maker,gaming avatar generator,twitter profile picture generator,cute pixel avatar,minecraft style avatar"
+  },
+  "copy_variants": {
+    "ultra_short_40": "AI Pixel Avatar Generator",
+    "short_60": "Transform photos into pixel avatars with AI in 10 seconds",
+    "tagline_80": "Free AI tool to create unique square face pixel avatars for Discord & Twitter",
+    "description_micro_150": "SquareFaceAI transforms your photos into adorable square-faced pixel avatars using AI. Free, fast (10 seconds), no signup required. Perfect for Discord, Twitter, gaming profiles.",
+    "description_short_260": "SquareFaceAI is a free AI-powered pixel avatar generator that transforms your photos into unique square-faced avatars in just 10 seconds. No signup required. Choose from kawaii, gaming, anime, and more styles. Export up to 1024px. Perfect for Discord, Twitter, YouTube, and gaming profiles. Privacy-first: photos are never stored.",
+    "description_medium_500": "SquareFaceAI is your go-to free AI avatar generator that transforms any photo into a unique square-faced pixel avatar in just 10 seconds.\n\n🎨 Key Features:\n• AI-powered personalization - captures your unique features\n• Multiple styles: Kawaii, Gaming, Anime, Cool, Friendly, Bold\n• Lightning fast - 10 second generation time\n• Privacy-first - photos are never stored\n• No signup required for free tier\n• Export up to 1024px resolution (Pro)\n• Commercial license available\n\nPerfect for Discord servers, Twitter profiles, YouTube channels, Twitch streams, TikTok, and gaming platforms. Create your unique digital identity today!",
+    "description_long_1000": "SquareFaceAI is the ultimate free AI-powered pixel avatar generator that transforms your photos into unique, adorable square-faced pixel avatars in just 10 seconds.\n\n🚀 What Makes SquareFaceAI Special:\n\nUnlike traditional avatar makers, SquareFaceAI uses advanced artificial intelligence to analyze your facial features and create a truly personalized pixel art avatar that captures your unique characteristics.\n\n🎨 Features:\n• AI-Powered Generation: Advanced AI analyzes your photo and creates a personalized avatar\n• Multiple Styles: Choose from Kawaii, Gaming, Anime, Cool, Friendly, Bold, and more\n• Lightning Fast: Get your avatar in just 10 seconds\n• Privacy First: Your photos are processed in real-time and immediately deleted\n• No Sign-up Required: Start creating instantly with the free tier\n• High Quality Export: Up to 1024px resolution for Pro users\n• 200+ Customization Options: Make your avatar truly unique\n\n💰 Pricing:\n• Free: 3 avatars/day, 256px, basic styles, personal use\n• Pro ($4.99/mo): Unlimited avatars, 1024px, all styles, commercial license, priority processing\n\n🎯 Perfect For:\n• Discord servers and gaming communities\n• Twitter/X profile pictures\n• YouTube channel avatars\n• Twitch streaming profiles\n• TikTok accounts\n• NFT profiles and Web3 identities\n• Gaming platforms (Steam, Epic, etc.)\n\n🔒 Privacy Guarantee:\nWe take privacy seriously. Your photos are processed in real-time and immediately deleted after your avatar is generated. We never store, share, or use your images for any other purpose.\n\nJoin thousands of users who've already created their unique pixel avatars. Get started in seconds - no credit card required!"
+  },
+  "key_features": [
+    "AI-powered avatar generation",
+    "10-second generation time",
+    "Multiple styles (Kawaii, Gaming, Anime, etc.)",
+    "No signup required for free tier",
+    "Privacy-first - photos never stored",
+    "Up to 1024px resolution",
+    "Commercial license available",
+    "200+ customization options"
+  ],
+  "use_cases": [
+    "Discord avatars",
+    "Twitter/X profile pictures",
+    "YouTube channel avatars",
+    "Gaming profiles (Steam, Twitch)",
+    "TikTok accounts",
+    "NFT/Web3 identities"
+  ],
+  "assets": {
+    "logo": ".backlinks/squarefaceai/assets/logos/logo.svg",
+    "screenshot": ".backlinks/squarefaceai/assets/screenshots/homepage.png",
+    "og_image": "https://squarefaceai.com/opengraph-image?74dc0a2a99eebbc0"
+  },
+  "existing_backlinks": [
+    {
+      "platform": "Fazier",
+      "url": "https://fazier.com/launches/squarefaceai",
+      "status": "live"
+    },
+    {
+      "platform": "Best of Web",
+      "url": "https://bestofweb.site/startups/squarefaceai",
+      "status": "live"
+    }
+  ],
+  "created_at": "2026-01-05",
+  "updated_at": "2026-01-05"
+}

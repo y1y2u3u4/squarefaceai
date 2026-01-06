@@ -1,0 +1,124 @@
+{
+  "project": "squarefaceai",
+  "url": "https://squarefaceai.com",
+  "submissions": [
+    {
+      "platform": "Fazier",
+      "platform_url": "https://fazier.com",
+      "submission_url": "https://fazier.com/launches/squarefaceai",
+      "status": "live",
+      "submitted_at": "2026-01-04",
+      "verified_at": "2026-01-05",
+      "method": "manual",
+      "notes": "Already submitted and live"
+    },
+    {
+      "platform": "Best of Web",
+      "platform_url": "https://bestofweb.site",
+      "submission_url": "https://bestofweb.site/startups/squarefaceai",
+      "status": "live",
+      "submitted_at": "2026-01-04",
+      "verified_at": "2026-01-05",
+      "method": "manual",
+      "notes": "Already submitted and live"
+    },
+    {
+      "platform": "ToolPilot",
+      "platform_url": "https://www.toolpilot.ai",
+      "status": "submitted",
+      "submitted_at": "2026-01-05",
+      "method": "automated",
+      "listing_type": "Free With Backlink",
+      "notes": "Free listing with backlink badge on footer. Processing time up to 60 days."
+    },
+    {
+      "platform": "Uneed",
+      "platform_url": "https://www.uneed.best",
+      "submission_url": "https://www.uneed.best/tool/squarefaceai",
+      "status": "launch_scheduled",
+      "submitted_at": "2026-01-05",
+      "launch_date": "2026-03-01",
+      "method": "automated",
+      "account": "zhanggongqing1314007@gmail.com",
+      "category": "Design",
+      "tags": ["AI", "Avatars"],
+      "notes": "Product submitted and launch scheduled for March 1, 2026. Free tier (waiting line ~55 days). DR 72 backlink."
+    },
+    {
+      "platform": "BetaList",
+      "platform_url": "https://betalist.com",
+      "submission_url": "https://betalist.com/submissions/144301",
+      "status": "draft",
+      "submitted_at": "2026-01-05",
+      "method": "automated",
+      "account": "squarefaceai",
+      "email": "support@squarefaceai.com",
+      "pricing": "Paid only - $29 Hobby / $299 Bootstrapped / $999 Funded",
+      "notes": "Account created, submission prepared. No free tier - minimum $29. Awaiting email verification."
+    },
+    {
+      "platform": "SaaSHub",
+      "platform_url": "https://www.saashub.com",
+      "submission_url": "https://www.saashub.com/squarefaceai-alternatives",
+      "status": "pending_approval",
+      "submitted_at": "2026-01-06",
+      "method": "automated",
+      "categories": ["AI Image Generator", "AI Avatar Generator", "Pixel Art"],
+      "competitor": "Lensa",
+      "notes": "Product page created, pending approval. Free submission with DoFollow backlink (DA 55)."
+    },
+    {
+      "platform": "Launching Next",
+      "platform_url": "https://www.launchingnext.com",
+      "submission_id": "123436",
+      "status": "submitted",
+      "submitted_at": "2026-01-06",
+      "method": "automated",
+      "review_time": "Up to 4 months (free tier)",
+      "express_option": "$99 for 1-day review",
+      "notes": "Free submission completed. Standard queue ~4 months. 25K+ audience reach."
+    }
+  ],
+  "pending_platforms": [
+    "Indie Hackers",
+    "AlternativeTo",
+    "StartupBase",
+    "AI Tool Directory",
+    "Futurepedia"
+  ],
+  "blocked_platforms": [
+    {
+      "platform": "Product Hunt",
+      "reason": "new_account_wait",
+      "account": "张宫卿",
+      "retry_after": "2026-01-13",
+      "notes": "Account logged in successfully. New accounts must wait 1 week before posting. Alternative: Subscribe to newsletter for immediate access at https://www.producthunt.com/newsletters/. Email verification also pending."
+    },
+    {
+      "platform": "PitchWall (BetaPage)",
+      "reason": "requires_oauth",
+      "notes": "Need Google/GitHub/Microsoft/Discord login. Free tier: 30 day wait, DA 50 DR 60."
+    },
+    {
+      "platform": "MicroLaunch",
+      "reason": "capacity_full",
+      "notes": "Basic (free) launch at full capacity. Pro launch is paid."
+    },
+    {
+      "platform": "There's An AI For That",
+      "reason": "paid_only",
+      "notes": "Minimum $49 for basic listing. No free tier."
+    },
+    {
+      "platform": "AlternativeTo",
+      "reason": "timeout",
+      "notes": "Site timing out repeatedly. Retry later."
+    },
+    {
+      "platform": "Indie Hackers",
+      "reason": "site_down",
+      "notes": "502 Bad Gateway. Site temporarily unavailable."
+    }
+  ],
+  "last_updated": "2026-01-06T14:00:00Z"
+}

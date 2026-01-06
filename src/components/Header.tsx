@@ -39,18 +39,18 @@ export default function Header() {
           : 'bg-white/80 backdrop-blur-md border-b border-gray-100'
       }`}
     >
-      <nav className="container mx-auto px-6 py-4">
+      <nav className="container mx-auto px-4 py-2 md:px-6 md:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-2 md:gap-3 group">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="transition-transform"
             >
-              <SquareFaceLogo size={36} />
+              <SquareFaceLogo size={28} className="md:w-9 md:h-9" />
             </motion.div>
-            <span className="text-xl font-bold gradient-mint">SquareFaceAI</span>
+            <span className="text-lg md:text-xl font-bold gradient-mint">SquareFaceAI</span>
           </Link>
 
           {/* Navigation Links */}
