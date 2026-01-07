@@ -27,11 +27,16 @@ import SEOContent from '@/components/landing/SEOContent';
 
 type UpgradeReason = 'limit_reached' | 'high_resolution' | 'commercial_use';
 
+// Demo avatar for first-time visitors to see the product effect immediately
+const DEMO_AVATAR = '/avatars/hero-avatar-1.png';
+
 export default function Home() {
   const t = useTranslations();
   const [isLoading, setIsLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [generatedAvatar, setGeneratedAvatar] = useState<string | null>(null);
+  // Pre-fill with demo avatar so users can see the result immediately
+  const [generatedAvatar, setGeneratedAvatar] = useState<string | null>(DEMO_AVATAR);
+  const [isDemo, setIsDemo] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // Usage limit state
@@ -76,6 +81,7 @@ export default function Home() {
       if (result.success && result.avatar) {
         const dataUrl = `data:${result.avatar.mimeType};base64,${result.avatar.data}`;
         setGeneratedAvatar(dataUrl);
+        setIsDemo(false); // Mark as user-generated, not demo
         // Increment usage count on successful generation
         incrementUsage();
       } else {
@@ -122,6 +128,7 @@ export default function Home() {
       if (result.success && result.avatar) {
         const dataUrl = `data:${result.avatar.mimeType};base64,${result.avatar.data}`;
         setGeneratedAvatar(dataUrl);
+        setIsDemo(false); // Mark as user-generated, not demo
         // Increment usage count on successful generation
         incrementUsage();
       } else {
@@ -145,7 +152,9 @@ export default function Home() {
   };
 
   const handleReset = () => {
+    // Reset to null so user can generate a new avatar
     setGeneratedAvatar(null);
+    setIsDemo(false);
     setError(null);
   };
 
