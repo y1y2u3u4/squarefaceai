@@ -31,7 +31,8 @@
     "hideOptions": "隐藏选项",
     "or": "或者",
     "uploadPhoto": "上传你的照片",
-    "uploadSubtitle": "获取个性化头像"
+    "uploadSubtitle": "获取个性化头像",
+    "exampleResult": "效果预览"
   },
   "result": {
     "title": "你的像素头像已完成！",

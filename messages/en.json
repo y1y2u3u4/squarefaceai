@@ -31,7 +31,8 @@
     "hideOptions": "Hide options",
     "or": "or",
     "uploadPhoto": "Upload your photo",
-    "uploadSubtitle": "For a personalized avatar"
+    "uploadSubtitle": "For a personalized avatar",
+    "exampleResult": "Example Result"
   },
   "result": {
     "title": "Your Pixel Avatar is Ready!",

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Sparkles, ChevronDown, Loader2 } from 'lucide-react';
@@ -8,6 +9,9 @@ import RandomOptions from './RandomOptions';
 import CompactUploadZone from './CompactUploadZone';
 import UsageIndicator from './UsageIndicator';
 import { RandomConfig, DEFAULT_RANDOM_CONFIG } from '@/types/avatar';
+
+// Demo avatar to show users what the result looks like
+const DEMO_AVATAR = '/avatars/hero-avatar-1.png';
 
 interface InputSelectorProps {
   onUpload: (file: File) => void;
@@ -62,6 +66,25 @@ export default function InputSelector({
             isPro={isPro}
             onUpgradeClick={onUpgradeClick}
           />
+        </div>
+      </div>
+
+      {/* Demo Avatar Preview - Shows users what the result looks like */}
+      <div className="flex justify-center">
+        <div className="relative">
+          <div className="w-28 h-28 md:w-32 md:h-32 rounded-2xl bg-[#c8e6c9] p-2 shadow-md">
+            <Image
+              src={DEMO_AVATAR}
+              alt="Example pixel avatar"
+              width={128}
+              height={128}
+              className="w-full h-full object-contain"
+              priority
+            />
+          </div>
+          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white px-2 py-0.5 rounded-full text-xs text-gray-500 shadow-sm border border-gray-100 whitespace-nowrap">
+            {t('exampleResult') || 'Example Result'}
+          </div>
         </div>
       </div>
 

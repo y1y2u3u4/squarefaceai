@@ -77,14 +77,54 @@
       "review_time": "Up to 4 months (free tier)",
       "express_option": "$99 for 1-day review",
       "notes": "Free submission completed. Standard queue ~4 months. 25K+ audience reach."
+    },
+    {
+      "platform": "AI Respo",
+      "platform_url": "https://airespo.com",
+      "status": "submitted",
+      "submitted_at": "2026-01-07",
+      "method": "automated",
+      "fields_filled": ["Name", "Email", "Tool Name", "Tool URL"],
+      "notes": "Free submission completed. Received 'Thank you for your submission' confirmation."
+    },
+    {
+      "platform": "Toolsverse",
+      "platform_url": "https://toolsverse.co",
+      "status": "submitted",
+      "submitted_at": "2026-01-07",
+      "method": "automated",
+      "category": "Avatars",
+      "pricing_type": "Freemium",
+      "review_time": "48 hours",
+      "notes": "Submission Successful! 48hr review time. Free tier submission."
+    },
+    {
+      "platform": "AI Review Battle",
+      "platform_url": "https://aireviewbattle.com",
+      "status": "submitted",
+      "submitted_at": "2026-01-07",
+      "method": "automated",
+      "category": "Image Generator",
+      "pricing_type": "Freemium",
+      "review_time": "2-5 working days",
+      "notes": "AI tool submission received. Manual review within 2-5 working days."
+    },
+    {
+      "platform": "Indie Hackers",
+      "platform_url": "https://www.indiehackers.com",
+      "status": "submitted",
+      "submitted_at": "2026-01-07",
+      "method": "automated",
+      "post_type": "Building in Public",
+      "title": "SquareFaceAI: Free AI Pixel Avatar Generator - Transform Photos in 10 Seconds",
+      "notes": "Post submitted to Building in Public group (5,486 members). Community engagement opportunity."
     }
   ],
   "pending_platforms": [
-    "Indie Hackers",
-    "AlternativeTo",
-    "StartupBase",
-    "AI Tool Directory",
-    "Futurepedia"
+    "StartupBase - Requires login",
+    "TheAISurf - Free, needs account",
+    "Insidr.ai - Free submission",
+    "Product Hunt - Wait until 2026-01-13 (new account restriction)"
   ],
   "blocked_platforms": [
     {
@@ -92,7 +132,7 @@
       "reason": "new_account_wait",
       "account": "张宫卿",
       "retry_after": "2026-01-13",
-      "notes": "Account logged in successfully. New accounts must wait 1 week before posting. Alternative: Subscribe to newsletter for immediate access at https://www.producthunt.com/newsletters/. Email verification also pending."
+      "notes": "Account logged in successfully. New accounts must wait 1 week before posting."
     },
     {
       "platform": "PitchWall (BetaPage)",
@@ -112,13 +152,37 @@
     {
       "platform": "AlternativeTo",
       "reason": "timeout",
-      "notes": "Site timing out repeatedly. Retry later."
+      "notes": "Site still timing out as of 2026-01-07. Skip for now."
     },
     {
-      "platform": "Indie Hackers",
-      "reason": "site_down",
-      "notes": "502 Bad Gateway. Site temporarily unavailable."
+      "platform": "Futurepedia",
+      "reason": "paid_only",
+      "notes": "Minimum $247 for basic listing (sold out). No free tier."
+    },
+    {
+      "platform": "aitools.fyi",
+      "reason": "paid_only",
+      "notes": "$30 Fast-Track only, no free option."
     }
   ],
-  "last_updated": "2026-01-06T14:00:00Z"
+  "daily_summary": {
+    "2026-01-04": {
+      "submissions": 2,
+      "platforms": ["Fazier", "Best of Web"]
+    },
+    "2026-01-05": {
+      "submissions": 3,
+      "platforms": ["ToolPilot", "Uneed", "BetaList"]
+    },
+    "2026-01-06": {
+      "submissions": 2,
+      "platforms": ["SaaSHub", "Launching Next"]
+    },
+    "2026-01-07": {
+      "submissions": 4,
+      "platforms": ["AI Respo", "Toolsverse", "AI Review Battle", "Indie Hackers"]
+    }
+  },
+  "total_submissions": 11,
+  "last_updated": "2026-01-07T12:00:00Z"
 }
